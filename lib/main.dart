@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guidefood/screen_control.dart';
+import 'package:guidefood/src/controlador_pantalla..dart';
 
 void main() => runApp(MyApp());
 
