@@ -1,0 +1,129 @@
+{
+    "ingredientes": [
+        {
+            "id": 1,
+            "nombre": "Tomate",
+            "tipo": "Rojo",
+            "imagen": "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c238.png",
+            "medida": "g"
+        },
+        {
+            "id": 2,
+            "nombre": "Pimiento",
+            "tipo": "Rojo",
+            "imagen": "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c229.png",
+            "medida": "g"
+        },
+        {
+            "id": 3,
+            "nombre": "Pimiento",
+            "tipo": "Verde",
+            "imagen": "https://www.stickpng.com/assets/images/585ea783cb11b227491c3538.png",
+            "medida": "g"
+        },
+        {
+            "id": 4,
+            "nombre": "Pepino",
+            "tipo": "Verde",
+            "imagen": "https://k62.kn3.net/taringa/D/4/D/C/D/1/vagonettas/550x443_4D5.png",
+            "medida": "g"
+        },
+        {
+            "id": 5,
+            "nombre": "Huevo",
+            "tipo": "Campero",
+            "imagen": "https://www.stickpng.com/assets/images/580b57fbd9996e24bc43c105.png",
+            "medida": "uds"
+        },
+        {
+            "id": 6,
+            "nombre": "Cebolla",
+            "tipo": "Dulce",
+            "imagen": "https://www.toponions.com/l/es/library/download/urn:uuid:02812934-1ae1-4e9a-b14f-c794c4ede699/zoete-uien--thumb.png",
+            "medida": "g"
+        },
+        {
+            "id": 7,
+            "nombre": "Sal",
+            "tipo": "Fina",
+            "imagen": "https://i0.wp.com/hoshigaki.es/wp-content/uploads/2016/06/SAL-PNG-SLIDE.png?fit=850%2C808",
+            "medida": "g"
+        },
+        {
+            "id": 8,
+            "nombre": "Patata",
+            "tipo": "Dorada Melody",
+            "imagen": "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c238.png",
+            "medida": "g"
+        },
+        {
+            "id": 9,
+            "nombre": "Pollo",
+            "tipo": "Campero",
+            "imagen": "https://freepngimg.com/thumb/chicken/1-chicken-head-png-image-thumb.png",
+            "medida": "uds"
+        },
+        {
+            "id": 10,
+            "nombre": "Aceite de oliva ",
+            "tipo": "Virgen extra",
+            "imagen": "https://rafaelsalgado.com/wp-content/uploads/2018/04/garrita.png",
+            "medida": "ml"
+        },
+        {
+            "id": 11,
+            "nombre": "Limón",
+            "tipo": "Normal",
+            "imagen": "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c159.png",
+            "medida": "uds"
+        },
+        {
+            "id": 12,
+            "nombre": "Ajo",
+            "tipo": "Blanco",
+            "imagen": "http://primaflor.com/wp-content/uploads/2017/02/cabeza-ajo.png",
+            "medida": "diente/s"
+        },
+        {
+            "id": 13,
+            "nombre": "Tomillo",
+            "tipo": "Normal",
+            "imagen": "https://www.stickpng.com/assets/images/58bf1e33e443f41d77c734ac.png",
+            "medida": "g"
+        }
+    ],
+    "recetas": [
+        {
+            "id": 1,
+            "nombre": "Pollo asado",
+            "descripcion": "Campero",
+            "ingredientes": [
+                10,
+                9,
+                8,
+                7,
+                11,
+                12,
+                13
+            ],
+            "calificacion": 0.0,
+            "imagen": "https://freepngimg.com/thumb/chicken/1-chicken-head-png-image-thumb.png"
+        },
+        {
+            "id": 1,
+            "nombre": "Pollo asado",
+            "descripcion": "Lo primero que hacemos es limpiar el pollo de posibles restos de grasa y vísceras que pueda tener. Pondremos especial cuidado en retirar las plumitas que le puedan haber quedado. Le pasamos un agua para limpiarlo bien y lo secamos con papel de cocina. Es importante que quede seco para que en el proceso de horneado el pollo no comience cociéndose, lo que queremos es que se haga bien horneado. En un mortero machacamos la pimienta negra y la sal. Con esta mezcla untamos bien el pollo por todas partes, tanto dentro como fuera. Cortamos el limón por la mitad y exprimimos un poco de su jugo por encima y dentro del pollo. Reservamos el resto del limón. En un vaso mezclamos el aceite con el tomillo. Con la ayuda de un pincel de cocina pintamos el pollo con la mezcla por dentro y por fuera. Reservamos el aceite de oliva virgen extra sobrante. Colocamos el pollo en la bandeja de horneado y metemos las mitades de limones en su interior. Añadimos también los dientes de ajo pelados y aplastados dentro del pollo. Pelamos las patatas, las cortamos en rodajas y las repartimos por la bandeja. Regamos tanto el pollo como las patatas con el aceite con tomillo sobrante.",
+            "ingredientes": [
+                10,
+                9,
+                8,
+                7,
+                11,
+                12,
+                13
+            ],
+            "calificacion": 0.0,
+            "imagen": "https://freepngimg.com/thumb/chicken/1-chicken-head-png-image-thumb.png"
+        }
+    ]
+}
