@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void setScreensControls() {
@@ -6,4 +7,12 @@ void setScreensControls() {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+}
+
+Size getMediaSize(BuildContext context) {
+  return MediaQuery.of(context).size;
+}
+
+EdgeInsets getMediaPadding(BuildContext context) {
+  return MediaQuery.of(context).padding;
 }

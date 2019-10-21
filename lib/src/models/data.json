@@ -96,22 +96,6 @@
         {
             "id": 1,
             "nombre": "Pollo asado",
-            "descripcion": "Campero",
-            "ingredientes": [
-                10,
-                9,
-                8,
-                7,
-                11,
-                12,
-                13
-            ],
-            "calificacion": 0.0,
-            "imagen": "https://freepngimg.com/thumb/chicken/1-chicken-head-png-image-thumb.png"
-        },
-        {
-            "id": 1,
-            "nombre": "Pollo asado",
             "descripcion": "Lo primero que hacemos es limpiar el pollo de posibles restos de grasa y vísceras que pueda tener. Pondremos especial cuidado en retirar las plumitas que le puedan haber quedado. Le pasamos un agua para limpiarlo bien y lo secamos con papel de cocina. Es importante que quede seco para que en el proceso de horneado el pollo no comience cociéndose, lo que queremos es que se haga bien horneado. En un mortero machacamos la pimienta negra y la sal. Con esta mezcla untamos bien el pollo por todas partes, tanto dentro como fuera. Cortamos el limón por la mitad y exprimimos un poco de su jugo por encima y dentro del pollo. Reservamos el resto del limón. En un vaso mezclamos el aceite con el tomillo. Con la ayuda de un pincel de cocina pintamos el pollo con la mezcla por dentro y por fuera. Reservamos el aceite de oliva virgen extra sobrante. Colocamos el pollo en la bandeja de horneado y metemos las mitades de limones en su interior. Añadimos también los dientes de ajo pelados y aplastados dentro del pollo. Pelamos las patatas, las cortamos en rodajas y las repartimos por la bandeja. Regamos tanto el pollo como las patatas con el aceite con tomillo sobrante.",
             "ingredientes": [
                 10,
