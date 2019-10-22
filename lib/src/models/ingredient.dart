@@ -1,5 +1,20 @@
 import 'package:flutter/material.dart';
 
+class Ingredientes {
+  List<Ingrediente> items = new List();
+
+  Ingredientes();
+
+  Ingredientes.fromJsonList(List<dynamic> jsonList) {
+    if (jsonList == null) return;
+
+    for (var item in jsonList) {
+      final ingrediente = new Ingrediente.fromJsonMap(item);
+      items.add(ingrediente);
+    }
+  }
+}
+
 class Ingrediente {
   int id;
   String nombre;

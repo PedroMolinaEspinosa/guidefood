@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:guidefood/src/controllers/api_provider.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/styles/colors.dart';
+import 'package:guidefood/src/widgets/SliverPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,6 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final recetasProvider = new RecetasProvider();
   String title = 'Prueba de titulo';
   @override
   Widget build(BuildContext context) {
@@ -48,14 +51,14 @@ class _HomePageState extends State<HomePage> {
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                generateSliver(),
-                generateSliver(),
-                generateSliver(),
-                generateSliver(),
-                generateSliver(),
-                generateSliver(),
-                generateSliver(),
-                generateSliver(),
+                _generarSlivers()
+                // generateSliver(),
+                // generateSliver(),
+                // generateSliver(),
+                // generateSliver(),
+                // generateSliver(),
+                // generateSliver(),
+                // generateSliver(),
               ],
             ),
           )
@@ -64,26 +67,19 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget generateSliver() {
-    return Container(
-      height: getMediaSize(context).height * 0.12,
-      color: backgroundsNeurok,
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          Container(
-              alignment: Alignment.bottomCenter,
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              width: getMediaSize(context).width * 0.12,
-              height: getMediaSize(context).width * 0.12,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: NetworkImage("https://i.imgur.com/BoN9kdC.png")))),
-        ],
-      ),
+  Widget _generarSlivers() {
+    return FutureBuilder(
+      future: recetasProvider.getIngredientes(),
+      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+        if (snapshot.hasData) {
+          return SliverPage(
+            ingredientes: snapshot.data,
+          );
+        } else {
+          return Container(
+              height: 300, child: Center(child: CircularProgressIndicator()));
+        }
+      },
     );
   }
 }

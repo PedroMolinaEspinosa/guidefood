@@ -1,5 +1,22 @@
 import 'package:guidefood/src/models/ingredient.dart';
 
+import 'dart:convert';
+
+class Recetas {
+  List<Receta> items = new List();
+
+  Recetas();
+
+  Recetas.fromJsonList(List<dynamic> jsonList) {
+    if (jsonList == null) return;
+
+    for (var item in jsonList) {
+      final receta = new Receta.fromJsonMap(item);
+      items.add(receta);
+    }
+  }
+}
+
 class Receta {
   int id;
   String nombre;
@@ -8,10 +25,15 @@ class Receta {
   double calificacion;
   String imagen;
 
-  Receta({this.id,this.nombre, this.descripcion, this.ingredientes, this.calificacion, this.imagen});
+  Receta(
+      {this.id,
+      this.nombre,
+      this.descripcion,
+      this.ingredientes,
+      this.calificacion,
+      this.imagen});
 
-
-Receta.fromJsonMap(Map<String, dynamic> json) {
+  Receta.fromJsonMap(Map<String, dynamic> json) {
     id = json['id'];
     nombre = json['nombre'];
     descripcion = json['descripcion'];
