@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:guidefood/src/controllers/api_provider.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/styles/colors.dart';
 import 'package:guidefood/src/widgets/SliverPage.dart';
+import 'package:http/http.dart' as http;
+
+import '../models/ingredient.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,7 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final recetasProvider = new RecetasProvider();
+  final apiProvider = new RecetasProvider();
+  List<Ingrediente> data;
   String title = 'Prueba de titulo';
   @override
   Widget build(BuildContext context) {
@@ -19,6 +25,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _getSliver() {
     return Container(
+      height: getMediaSize(context).height,
       color: Colors.orange,
       child: CustomScrollView(
         slivers: <Widget>[
@@ -50,16 +57,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SliverList(
             delegate: SliverChildListDelegate(
-              [
-                _generarSlivers()
-                // generateSliver(),
-                // generateSliver(),
-                // generateSliver(),
-                // generateSliver(),
-                // generateSliver(),
-                // generateSliver(),
-                // generateSliver(),
-              ],
+              [_generarSlivers()],
             ),
           )
         ],
@@ -69,11 +67,11 @@ class _HomePageState extends State<HomePage> {
 
   Widget _generarSlivers() {
     return FutureBuilder(
-      future: recetasProvider.getIngredientes(),
+      future: apiProvider.getRecetas(),
       builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
         if (snapshot.hasData) {
           return SliverPage(
-            ingredientes: snapshot.data,
+            recetas: snapshot.data,
           );
         } else {
           return Container(

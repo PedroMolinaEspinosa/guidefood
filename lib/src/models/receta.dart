@@ -20,8 +20,11 @@ class Recetas {
 class Receta {
   int id;
   String nombre;
-  String descripcion;
-  List<Ingrediente> ingredientes;
+  List<dynamic> descripcion;
+  List<List<dynamic>> ingredientes = new List<List<dynamic>>();
+  String dificultad;
+  String duracion;
+  String categoria;
   double calificacion;
   String imagen;
 
@@ -30,6 +33,9 @@ class Receta {
       this.nombre,
       this.descripcion,
       this.ingredientes,
+      this.dificultad,
+      this.duracion,
+      this.categoria,
       this.calificacion,
       this.imagen});
 
@@ -37,8 +43,11 @@ class Receta {
     id = json['id'];
     nombre = json['nombre'];
     descripcion = json['descripcion'];
-    ingredientes = json['ingredientes'];
-    calificacion = json['calificacion'];
+    ingredientes = json['ingredientes'].cast<List<dynamic>>();
+    dificultad = json['dificultad'];
+    duracion = json['duracion'];
+    categoria = json['categoria'];
+    calificacion = json['calificacion'] / 1;
     imagen = json['imagen'];
   }
 }
