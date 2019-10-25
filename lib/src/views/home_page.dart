@@ -26,14 +26,17 @@ class _HomePageState extends State<HomePage> {
   Widget _getSliver() {
     return Container(
       height: getMediaSize(context).height,
-      color: Colors.orange,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/background-sliver-page.png"),
+              fit: BoxFit.fitHeight)),
       child: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
             //title: ,
             pinned: true,
             floating: false,
-            expandedHeight: getMediaSize(context).height * 0.3,
+            expandedHeight: getMediaSize(context).height * 0.23,
             flexibleSpace: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
               return FlexibleSpaceBar(
