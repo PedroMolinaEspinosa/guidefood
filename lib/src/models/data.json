@@ -1,0 +1,445 @@
+{
+    "ingredientes": [
+        {
+            "id": 1,
+            "nombre": "Tomate",
+            "tipo": "Rojo",
+            "imagen": "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c238.png",
+            "medida": "g"
+        },
+        {
+            "id": 2,
+            "nombre": "Pimiento",
+            "tipo": "Rojo",
+            "imagen": "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c229.png",
+            "medida": "g"
+        },
+        {
+            "id": 3,
+            "nombre": "Pimiento",
+            "tipo": "Verde",
+            "imagen": "https://www.stickpng.com/assets/images/585ea783cb11b227491c3538.png",
+            "medida": "g"
+        },
+        {
+            "id": 4,
+            "nombre": "Pepino",
+            "tipo": "Verde",
+            "imagen": "https://k62.kn3.net/taringa/D/4/D/C/D/1/vagonettas/550x443_4D5.png",
+            "medida": "g"
+        },
+        {
+            "id": 5,
+            "nombre": "Huevo",
+            "tipo": "Campero",
+            "imagen": "https://www.stickpng.com/assets/images/580b57fbd9996e24bc43c105.png",
+            "medida": "uds"
+        },
+        {
+            "id": 6,
+            "nombre": "Cebolla",
+            "tipo": "Dulce",
+            "imagen": "https://www.toponions.com/l/es/library/download/urn:uuid:02812934-1ae1-4e9a-b14f-c794c4ede699/zoete-uien--thumb.png",
+            "medida": "g"
+        },
+        {
+            "id": 7,
+            "nombre": "Sal",
+            "tipo": "Fina",
+            "imagen": "https://i0.wp.com/hoshigaki.es/wp-content/uploads/2016/06/SAL-PNG-SLIDE.png?fit=850%2C808",
+            "medida": "g"
+        },
+        {
+            "id": 8,
+            "nombre": "Patata",
+            "tipo": "Dorada Melody",
+            "imagen": "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c238.png",
+            "medida": "g"
+        },
+        {
+            "id": 9,
+            "nombre": "Pollo",
+            "tipo": "Campero",
+            "imagen": "https://freepngimg.com/thumb/chicken/1-chicken-head-png-image-thumb.png",
+            "medida": "uds"
+        },
+        {
+            "id": 10,
+            "nombre": "Aceite de oliva ",
+            "tipo": "Virgen extra",
+            "imagen": "https://rafaelsalgado.com/wp-content/uploads/2018/04/garrita.png",
+            "medida": "ml"
+        },
+        {
+            "id": 11,
+            "nombre": "Limón",
+            "tipo": "Normal",
+            "imagen": "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c159.png",
+            "medida": "uds"
+        },
+        {
+            "id": 12,
+            "nombre": "Ajo",
+            "tipo": "Blanco",
+            "imagen": "http://primaflor.com/wp-content/uploads/2017/02/cabeza-ajo.png",
+            "medida": "diente/s"
+        },
+        {
+            "id": 13,
+            "nombre": "Tomillo",
+            "tipo": "Normal",
+            "imagen": "https://www.stickpng.com/assets/images/58bf1e33e443f41d77c734ac.png",
+            "medida": "g"
+        },
+        {
+            "id": 14,
+            "nombre": "Atún",
+            "tipo": "Claro",
+            "imagen": "https://www.espinaler.com/wp-content/uploads/atun.png",
+            "medida": "g"
+        },
+        {
+            "id": 15,
+            "nombre": "Guisantes",
+            "tipo": "Verdes",
+            "imagen": "https://www.cascadianfarm.com/wp-content/uploads/2018/12/SweetPeas_Main_0175-1.png",
+            "medida": "g"
+        },
+        {
+            "id": 17,
+            "nombre": "Ternera",
+            "tipo": "Magra",
+            "imagen": "https://pngimage.net/wp-content/uploads/2018/06/ternera-png-1.png",
+            "medida": "g"
+        },
+        {
+            "id": 18,
+            "nombre": "Lechuga",
+            "tipo": "Romana",
+            "imagen": "https://img2.freepng.es/20181110/fz/kisspng-romaine-lettuce-iceberg-lettuce-vegetable-salad-ri-5be77eb5caa654.1970901215418979098301.jpg",
+            "medida": "g"
+        },
+        {
+            "id": 19,
+            "nombre": "Lechuga",
+            "tipo": "Iceberg",
+            "imagen": "http://primaflor.com/wp-content/uploads/2017/03/2.-lechuga-iceberg2-baja.png",
+            "medida": "g"
+        },
+        {
+            "id": 20,
+            "nombre": "Lechuga",
+            "tipo": "Escarola",
+            "imagen": "http://primaflor.com/wp-content/uploads/2017/03/E-Escarola-Lisa.png",
+            "medida": "g"
+        },
+        {
+            "id": 21,
+            "nombre": "Lechuga",
+            "tipo": "Rúcula",
+            "imagen": "http://www.verdimed.es/images/rucula3.png",
+            "medida": "g"
+        },
+        {
+            "id": 22,
+            "nombre": "Mayonesa",
+            "tipo": "Tradicional",
+            "imagen": "https://www.hellmanns.com/content/dam/unilever/hellmann_s_world/argentina/spanish/pack_shot/hellmanns-mayonesa-receta-casera-7794000999961-470g-doypack-1329344-png.png",
+            "medida": "g"
+        },
+        {
+            "id": 23,
+            "nombre": "Aceituna",
+            "tipo": "Verde",
+            "imagen": "https://static.wixstatic.com/media/4719b3_0b29845b6bda7b772a90955f8dea7c46.png/v1/fill/w_748,h_465,al_c,q_90/4719b3_0b29845b6bda7b772a90955f8dea7c46.webp",
+            "medida": "g"
+        },
+        {
+            "id": 24,
+            "nombre": "Aceituna",
+            "tipo": "Negra",
+            "imagen": "http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c167.png",
+            "medida": "g"
+        },
+        {
+            "id": 25,
+            "nombre": "Remolacha",
+            "tipo": "Roja",
+            "imagen": "https://www.stickpng.com/assets/images/585ea44dcb11b227491c351e.png",
+            "medida": "g"
+        },
+        {
+            "id": 26,
+            "nombre": "Lentejas",
+            "tipo": "",
+            "imagen": "https://www.stickpng.com/assets/images/585ea44dcb11b227491c351e.png",
+            "medida": "g"
+        }
+    ],
+    "recetas": [
+        {
+            "id": 1,
+            "nombre": "Pollo asado con patatas",
+            "dificultad": "Media",
+            "duracion": "1 hora/s",
+            "categoria": "carnes",
+            "descripcion": [
+                "1. Limpiamos el pollo, lo untamos con tomillo, sal y algo de limón exprimido por fuera y por dentro del pollo .",
+                "2. Mezclamos el aceite y el tomillo y untamos el pollo.",
+                "3. Colocamos el pollo en la bandeja de horneado y metemos las mitades de limones en su interior. Añadimos también los dientes de ajo pelados y aplastados dentro del pollo.",
+                "4. Pelamos las patatas, las cortamos en rodajas y las repartimos por la bandeja",
+                "5. Regamos tanto el pollo como las patatas con el aceite con tomillo sobrante.",
+                "6. Horneamos durante 1 hora y 15 minutos a 190º"
+            ],
+            "ingredientes": [
+                [
+                    10,
+                    100
+                ],
+                [
+                    9,
+                    1800
+                ],
+                [
+                    8,
+                    200
+                ],
+                [
+                    7,
+                    10
+                ],
+                [
+                    11,
+                    50
+                ],
+                [
+                    12,
+                    3
+                ],
+                [
+                    13,
+                    2
+                ]
+            ],
+            "calificacion": 0.0,
+            "imagen": "https://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ce.png"
+        },
+        {
+            "id": 2,
+            "nombre": "Tortilla de patata",
+            "dificultad": "Baja",
+            "duracion": "30 minutos",
+            "categoria": "Tortillas",
+            "descripcion": [
+                "1. Pelamos, lavamos y secamos las patatas.",
+                "2. Cortamos en láminas semifinas las patatas y las colocamos en un bol.",
+                "3. Ponemos aceite a calentar en una sartén y echamos las patatas cortadas ya saladas a freír durante unos 20 minutos a fuego bajo.",
+                "4. Mientras, batimos los huevos en el bol.",
+                "5. Cortamos trozos finos de cebolla y la freímos hasta que se dore para después mezclarla en el bol con el huevo.",
+                "6. Sacamos las patatas de la sartén escurriendo todo el aceite y las mezclamos en el bol con los huevos y la cebolla. ",
+                "7. Vertemos la mezcla en la sartén y la freímos durante unos 4 o 5 minutos a fuego medio-bajo.",
+                "8. Para darle la vuelta utilizamos un plato algo más grande que la sartén y cocinamos por la otra parte."
+            ],
+            "ingredientes": [
+                [
+                    5,
+                    3
+                ],
+                [
+                    6,
+                    50
+                ],
+                [
+                    8,
+                    180
+                ],
+                [
+                    7,
+                    10
+                ],
+                [
+                    10,
+                    50
+                ]
+            ],
+            "calificacion": 0.0,
+            "imagen": "https://ibericosperu.com/600-large/tortilla-de-patata.jpg"
+        },
+        {
+            "id": 3,
+            "nombre": "Pollo asado con patatas",
+            "dificultad": "Media",
+            "duracion": "1 hora/s",
+            "categoria": "carnes",
+            "descripcion": [
+                "1. Limpiamos el pollo, lo untamos con tomillo, sal y algo de limón exprimido por fuera y por dentro del pollo .",
+                "2. Mezclamos el aceite y el tomillo y untamos el pollo.",
+                "3. Colocamos el pollo en la bandeja de horneado y metemos las mitades de limones en su interior. Añadimos también los dientes de ajo pelados y aplastados dentro del pollo.",
+                "4. Pelamos las patatas, las cortamos en rodajas y las repartimos por la bandeja",
+                "5. Regamos tanto el pollo como las patatas con el aceite con tomillo sobrante.",
+                "6. Horneamos durante 1 hora y 15 minutos a 190º"
+            ],
+            "ingredientes": [
+                [
+                    10,
+                    100
+                ],
+                [
+                    9,
+                    1800
+                ],
+                [
+                    8,
+                    200
+                ],
+                [
+                    7,
+                    10
+                ],
+                [
+                    11,
+                    50
+                ],
+                [
+                    12,
+                    3
+                ],
+                [
+                    13,
+                    2
+                ]
+            ],
+            "calificacion": 0.0,
+            "imagen": "https://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ce.png"
+        },
+        {
+            "id": 4,
+            "nombre": "Tortilla de patata",
+            "dificultad": "Baja",
+            "duracion": "30 minutos",
+            "categoria": "Tortillas",
+            "descripcion": [
+                "1. Pelamos, lavamos y secamos las patatas.",
+                "2. Cortamos en láminas semifinas las patatas y las colocamos en un bol.",
+                "3. Ponemos aceite a calentar en una sartén y echamos las patatas cortadas ya saladas a freír durante unos 20 minutos a fuego bajo.",
+                "4. Mientras, batimos los huevos en el bol.",
+                "5. Cortamos trozos finos de cebolla y la freímos hasta que se dore para después mezclarla en el bol con el huevo.",
+                "6. Sacamos las patatas de la sartén escurriendo todo el aceite y las mezclamos en el bol con los huevos y la cebolla. ",
+                "7. Vertemos la mezcla en la sartén y la freímos durante unos 4 o 5 minutos a fuego medio-bajo.",
+                "8. Para darle la vuelta utilizamos un plato algo más grande que la sartén y cocinamos por la otra parte."
+            ],
+            "ingredientes": [
+                [
+                    5,
+                    3
+                ],
+                [
+                    6,
+                    50
+                ],
+                [
+                    8,
+                    180
+                ],
+                [
+                    7,
+                    10
+                ],
+                [
+                    10,
+                    50
+                ]
+            ],
+            "calificacion": 0.0,
+            "imagen": "https://ibericosperu.com/600-large/tortilla-de-patata.jpg"
+        },
+        {
+            "id": 5,
+            "nombre": "Pollo asado con patatas",
+            "dificultad": "Media",
+            "duracion": "1 hora/s",
+            "categoria": "carnes",
+            "descripcion": [
+                "1. Limpiamos el pollo, lo untamos con tomillo, sal y algo de limón exprimido por fuera y por dentro del pollo .",
+                "2. Mezclamos el aceite y el tomillo y untamos el pollo.",
+                "3. Colocamos el pollo en la bandeja de horneado y metemos las mitades de limones en su interior. Añadimos también los dientes de ajo pelados y aplastados dentro del pollo.",
+                "4. Pelamos las patatas, las cortamos en rodajas y las repartimos por la bandeja",
+                "5. Regamos tanto el pollo como las patatas con el aceite con tomillo sobrante.",
+                "6. Horneamos durante 1 hora y 15 minutos a 190º"
+            ],
+            "ingredientes": [
+                [
+                    10,
+                    100
+                ],
+                [
+                    9,
+                    1800
+                ],
+                [
+                    8,
+                    200
+                ],
+                [
+                    7,
+                    10
+                ],
+                [
+                    11,
+                    50
+                ],
+                [
+                    12,
+                    3
+                ],
+                [
+                    13,
+                    2
+                ]
+            ],
+            "calificacion": 0.0,
+            "imagen": "https://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ce.png"
+        },
+        {
+            "id": 6,
+            "nombre": "Tortilla de patata",
+            "dificultad": "Baja",
+            "duracion": "30 minutos",
+            "categoria": "Tortillas",
+            "descripcion": [
+                "1. Pelamos, lavamos y secamos las patatas.",
+                "2. Cortamos en láminas semifinas las patatas y las colocamos en un bol.",
+                "3. Ponemos aceite a calentar en una sartén y echamos las patatas cortadas ya saladas a freír durante unos 20 minutos a fuego bajo.",
+                "4. Mientras, batimos los huevos en el bol.",
+                "5. Cortamos trozos finos de cebolla y la freímos hasta que se dore para después mezclarla en el bol con el huevo.",
+                "6. Sacamos las patatas de la sartén escurriendo todo el aceite y las mezclamos en el bol con los huevos y la cebolla. ",
+                "7. Vertemos la mezcla en la sartén y la freímos durante unos 4 o 5 minutos a fuego medio-bajo.",
+                "8. Para darle la vuelta utilizamos un plato algo más grande que la sartén y cocinamos por la otra parte."
+            ],
+            "ingredientes": [
+                [
+                    5,
+                    3
+                ],
+                [
+                    6,
+                    50
+                ],
+                [
+                    8,
+                    180
+                ],
+                [
+                    7,
+                    10
+                ],
+                [
+                    10,
+                    50
+                ]
+            ],
+            "calificacion": 0.0,
+            "imagen": "https://ibericosperu.com/600-large/tortilla-de-patata.jpg"
+        }
+    ]
+}
