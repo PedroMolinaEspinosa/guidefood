@@ -264,6 +264,182 @@
             ],
             "calificacion": 0.0,
             "imagen": "https://ibericosperu.com/600-large/tortilla-de-patata.jpg"
+        },
+        {
+            "id": 3,
+            "nombre": "Pollo asado con patatas",
+            "dificultad": "Media",
+            "duracion": "1 hora/s",
+            "categoria": "carnes",
+            "descripcion": [
+                "1. Limpiamos el pollo, lo untamos con tomillo, sal y algo de limón exprimido por fuera y por dentro del pollo .",
+                "2. Mezclamos el aceite y el tomillo y untamos el pollo.",
+                "3. Colocamos el pollo en la bandeja de horneado y metemos las mitades de limones en su interior. Añadimos también los dientes de ajo pelados y aplastados dentro del pollo.",
+                "4. Pelamos las patatas, las cortamos en rodajas y las repartimos por la bandeja",
+                "5. Regamos tanto el pollo como las patatas con el aceite con tomillo sobrante.",
+                "6. Horneamos durante 1 hora y 15 minutos a 190º"
+            ],
+            "ingredientes": [
+                [
+                    10,
+                    100
+                ],
+                [
+                    9,
+                    1800
+                ],
+                [
+                    8,
+                    200
+                ],
+                [
+                    7,
+                    10
+                ],
+                [
+                    11,
+                    50
+                ],
+                [
+                    12,
+                    3
+                ],
+                [
+                    13,
+                    2
+                ]
+            ],
+            "calificacion": 0.0,
+            "imagen": "https://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ce.png"
+        },
+        {
+            "id": 4,
+            "nombre": "Tortilla de patata",
+            "dificultad": "Baja",
+            "duracion": "30 minutos",
+            "categoria": "Tortillas",
+            "descripcion": [
+                "1. Pelamos, lavamos y secamos las patatas.",
+                "2. Cortamos en láminas semifinas las patatas y las colocamos en un bol.",
+                "3. Ponemos aceite a calentar en una sartén y echamos las patatas cortadas ya saladas a freír durante unos 20 minutos a fuego bajo.",
+                "4. Mientras, batimos los huevos en el bol.",
+                "5. Cortamos trozos finos de cebolla y la freímos hasta que se dore para después mezclarla en el bol con el huevo.",
+                "6. Sacamos las patatas de la sartén escurriendo todo el aceite y las mezclamos en el bol con los huevos y la cebolla. ",
+                "7. Vertemos la mezcla en la sartén y la freímos durante unos 4 o 5 minutos a fuego medio-bajo.",
+                "8. Para darle la vuelta utilizamos un plato algo más grande que la sartén y cocinamos por la otra parte."
+            ],
+            "ingredientes": [
+                [
+                    5,
+                    3
+                ],
+                [
+                    6,
+                    50
+                ],
+                [
+                    8,
+                    180
+                ],
+                [
+                    7,
+                    10
+                ],
+                [
+                    10,
+                    50
+                ]
+            ],
+            "calificacion": 0.0,
+            "imagen": "https://ibericosperu.com/600-large/tortilla-de-patata.jpg"
+        },
+        {
+            "id": 5,
+            "nombre": "Pollo asado con patatas",
+            "dificultad": "Media",
+            "duracion": "1 hora/s",
+            "categoria": "carnes",
+            "descripcion": [
+                "1. Limpiamos el pollo, lo untamos con tomillo, sal y algo de limón exprimido por fuera y por dentro del pollo .",
+                "2. Mezclamos el aceite y el tomillo y untamos el pollo.",
+                "3. Colocamos el pollo en la bandeja de horneado y metemos las mitades de limones en su interior. Añadimos también los dientes de ajo pelados y aplastados dentro del pollo.",
+                "4. Pelamos las patatas, las cortamos en rodajas y las repartimos por la bandeja",
+                "5. Regamos tanto el pollo como las patatas con el aceite con tomillo sobrante.",
+                "6. Horneamos durante 1 hora y 15 minutos a 190º"
+            ],
+            "ingredientes": [
+                [
+                    10,
+                    100
+                ],
+                [
+                    9,
+                    1800
+                ],
+                [
+                    8,
+                    200
+                ],
+                [
+                    7,
+                    10
+                ],
+                [
+                    11,
+                    50
+                ],
+                [
+                    12,
+                    3
+                ],
+                [
+                    13,
+                    2
+                ]
+            ],
+            "calificacion": 0.0,
+            "imagen": "https://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ce.png"
+        },
+        {
+            "id": 6,
+            "nombre": "Tortilla de patata",
+            "dificultad": "Baja",
+            "duracion": "30 minutos",
+            "categoria": "Tortillas",
+            "descripcion": [
+                "1. Pelamos, lavamos y secamos las patatas.",
+                "2. Cortamos en láminas semifinas las patatas y las colocamos en un bol.",
+                "3. Ponemos aceite a calentar en una sartén y echamos las patatas cortadas ya saladas a freír durante unos 20 minutos a fuego bajo.",
+                "4. Mientras, batimos los huevos en el bol.",
+                "5. Cortamos trozos finos de cebolla y la freímos hasta que se dore para después mezclarla en el bol con el huevo.",
+                "6. Sacamos las patatas de la sartén escurriendo todo el aceite y las mezclamos en el bol con los huevos y la cebolla. ",
+                "7. Vertemos la mezcla en la sartén y la freímos durante unos 4 o 5 minutos a fuego medio-bajo.",
+                "8. Para darle la vuelta utilizamos un plato algo más grande que la sartén y cocinamos por la otra parte."
+            ],
+            "ingredientes": [
+                [
+                    5,
+                    3
+                ],
+                [
+                    6,
+                    50
+                ],
+                [
+                    8,
+                    180
+                ],
+                [
+                    7,
+                    10
+                ],
+                [
+                    10,
+                    50
+                ]
+            ],
+            "calificacion": 0.0,
+            "imagen": "https://ibericosperu.com/600-large/tortilla-de-patata.jpg"
         }
     ]
 }

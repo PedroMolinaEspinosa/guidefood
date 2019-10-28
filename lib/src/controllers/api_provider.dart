@@ -10,8 +10,14 @@ class RecetasProvider {
   String _url = 'http://192.168.0.15:3000/recetas';
 
   Future<List<Receta>> getRecetas() async {
-    var resp = await http
-        .get(Uri.encodeFull(_url), headers: {"Accept": "application/json"});
+    var resp;
+    try {
+      resp = await http
+          .get(Uri.encodeFull(_url), headers: {"Accept": "application/json"});
+    } catch (e) {
+      print(e);
+      return [];
+    }
 
     final decodedData = json.decode(resp.body);
 

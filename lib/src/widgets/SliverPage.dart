@@ -5,17 +5,12 @@ import 'package:guidefood/src/views/clippers/ClipperRecetas.dart';
 import 'package:guidefood/src/views/clippers/CustomClipperShadowWidget.dart';
 
 class SliverPage extends StatelessWidget {
-  List<Receta> recetas;
+  Receta receta;
 
-  SliverPage({this.recetas});
+  SliverPage({this.receta});
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: recetas.length,
-        itemBuilder: (context, index) {
-          return Container(
+     return Container(
             height: getMediaSize(context).height * 0.12,
             margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Row(
@@ -38,8 +33,8 @@ class SliverPage extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                             fit: BoxFit.fill,
-                            image: NetworkImage(recetas[index].imagen)))),
-                _clipperCard(context, index),
+                            image: NetworkImage(receta.imagen)))),
+                _clipperCard(context, receta),
               ],
             ),
             decoration: BoxDecoration(
@@ -52,12 +47,12 @@ class SliverPage extends StatelessWidget {
                     spreadRadius: 0.5,
                     offset: Offset(0.0, 5.0)),
               ],
-            ),
-          );
-        });
+            ));
+          
+        
   }
 
-  Widget _clipperCard(BuildContext context, int index) {
+  Widget _clipperCard(BuildContext context, Receta receta) {
     EdgeInsets padingCommentFirstRow =
         EdgeInsets.only(top: 5, right: 5, left: 5, bottom: 5);
     return ClipShadowPath(
@@ -73,7 +68,7 @@ class SliverPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                recetas[index].nombre,
+                receta.nombre,
                 style: TextStyle(
                   decoration: TextDecoration.none,
                   color: Colors.orangeAccent,
