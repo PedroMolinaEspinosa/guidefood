@@ -16,7 +16,7 @@ Color primaryColor = Color(0xFF214703);
 Color primaryColorLight = Color.fromRGBO(77, 129, 5, 0.8);
 Color primaryColorDark = Color.fromRGBO(19, 32, 1, 0.8);
 Color accentColor = Color.fromRGBO(62, 106, 3, 0.8);
-Color marron = Color.fromRGBO(124, 62, 14, 0.8);
+Color marron = Color.fromRGBO(124, 62, 14, 0.4);
 Color black = Colors.black;
 Color white = Colors.white;
 

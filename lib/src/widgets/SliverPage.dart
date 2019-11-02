@@ -11,18 +11,25 @@ class SliverPage extends StatelessWidget {
   SliverPage({this.receta});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: getMediaSize(context).height * 0.14,
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Container(
-              alignment: Alignment.bottomCenter,
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              width: getMediaSize(context).width * 0.15,
-              height: getMediaSize(context).width * 0.15,
-              decoration: BoxDecoration(
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, "detalle", arguments: receta);
+      },
+      child: Container(
+        height: getMediaSize(context).height * 0.14,
+        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Hero(
+              tag: receta.id,
+              child: Container(
+                alignment: Alignment.bottomCenter,
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                width: getMediaSize(context).width * 0.15,
+                height: getMediaSize(context).width * 0.15,
+                decoration: BoxDecoration(
                   boxShadow: <BoxShadow>[
                     BoxShadow(
                         color: Colors.black26,
@@ -33,20 +40,26 @@ class SliverPage extends StatelessWidget {
                   color: Colors.white70,
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      fit: BoxFit.fill, image: NetworkImage(receta.imagen)))),
-          _clipperCard(context, receta),
-        ],
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        color: Colors.white38,
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-              color: Colors.black26,
-              blurRadius: 10,
-              spreadRadius: 0.5,
-              offset: Offset(0.0, 5.0)),
-        ],
+                    fit: BoxFit.fill,
+                    image: NetworkImage(receta.imagen),
+                  ),
+                ),
+              ),
+            ),
+            _clipperCard(context, receta),
+          ],
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          color: Colors.white38,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: Colors.black26,
+                blurRadius: 10,
+                spreadRadius: 0.5,
+                offset: Offset(0.0, 5.0)),
+          ],
+        ),
       ),
     );
   }
@@ -169,7 +182,6 @@ class SliverPage extends StatelessWidget {
   }
 
   Image getIconCalificacion(Receta receta) {
-    double calificacion = 7;
     if (receta.calificacion < 2.5)
       return Image(
         image: AssetImage("assets/iconos/heart0.png"),
