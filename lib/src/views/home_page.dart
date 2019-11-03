@@ -4,6 +4,7 @@ import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/models/receta.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 import 'package:guidefood/src/widgets/SliverPage.dart';
+import 'package:guidefood/src/widgets/appBar_%20page.dart';
 import '../models/ingredient.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,13 +13,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var top = 0.0;
   String imagenError = "assets/images/background-sliver-page.png";
 
   bool datosCargados = false;
   final apiProvider = new RecetasProvider();
-  List<Ingrediente> data;
-  String titulo = "";
-  String imagenUltimaReceta;
+
   @override
   Widget build(BuildContext context) {
     return _getSliver();
@@ -29,53 +29,23 @@ class _HomePageState extends State<HomePage> {
       width: getMediaSize(context).width,
       height: getMediaSize(context).height,
       decoration: BoxDecoration(
-          color: white,
-          image: DecorationImage(
-              image: datosCargados
-                  ? NetworkImage(imagenUltimaReceta)
-                  : AssetImage("assets/images/background-sliver-page.png"),
-              fit: BoxFit.fill)),
+        color: white,
+        image: DecorationImage(
+            image: AssetImage("assets/images/background-sliver-page.png"),
+            fit: BoxFit.fill),
+      ),
       child: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            backgroundColor: marron,
-            elevation: 0.0,
-            //automaticallyImplyLeading: false,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Container(
-                  child: Icon(Icons.dehaze),
-                )
-              ],
-            ),
-            forceElevated: true,
-            //centerTitle: true,
-            bottom: PreferredSize(
-                child: Container(
-                  color: black,
-                  height: 4.0,
-                ),
-                preferredSize: Size.fromHeight(4.0)),
-
-            pinned: true,
-            floating: false,
-            expandedHeight: getMediaSize(context).height * 0.23,
+            title: getAppBar(context, Colors.transparent, 0),
             flexibleSpace: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
+              top = constraints.biggest.height;
               return FlexibleSpaceBar(
-                centerTitle: true,
-                title: AnimatedOpacity(
-                  duration: Duration(milliseconds: 200),
-                  //opacity: top < 100.0 ? 0.0 : 1.0,
-                  opacity: 1.0,
-                  child: Text(
-                    titulo,
-                    style: TextStyle(
-                      fontSize: 12.0,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                titlePadding: EdgeInsets.symmetric(vertical: 0),
+                title: Container(
+                  color: black,
+                  height: 1,
                 ),
                 background: Image.asset(
                   "assets/images/recetasSliver.jpg",
@@ -83,6 +53,11 @@ class _HomePageState extends State<HomePage> {
                 ),
               );
             }),
+            backgroundColor: marron,
+            elevation: 0.0,
+            pinned: true,
+            floating: false,
+            expandedHeight: getMediaSize(context).height * 0.23,
           ),
           FutureBuilder(
             future: apiProvider.getRecetas(),
@@ -120,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                   Receta receta = projectSnap.data[index];
                   Receta ultimaReceta =
                       projectSnap.data[projectSnap.data.length - 1];
-                  imagenUltimaReceta = ultimaReceta.imagen;
+
                   return SliverPage(
                     receta: receta,
                   );

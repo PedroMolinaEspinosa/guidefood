@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guidefood/src/controllers/centralizador_metodos.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/models/receta.dart';
 import 'package:guidefood/src/styles/estilo.dart';
@@ -22,26 +23,29 @@ class SliverPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Hero(
-              tag: receta.id,
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                width: getMediaSize(context).width * 0.15,
-                height: getMediaSize(context).width * 0.15,
-                decoration: BoxDecoration(
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 10,
-                        spreadRadius: 0.5,
-                        offset: Offset(0.0, 5.0)),
-                  ],
-                  color: Colors.white70,
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: NetworkImage(receta.imagen),
+            Container(
+              alignment: Alignment.bottomCenter,
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              width: getMediaSize(context).width * 0.15,
+              height: getMediaSize(context).width * 0.15,
+              child: Hero(
+                tag: receta.id,
+                transitionOnUserGestures: true,
+                child: Container(
+                  decoration: BoxDecoration(
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 10,
+                          spreadRadius: 0.5,
+                          offset: Offset(0.0, 5.0)),
+                    ],
+                    color: Colors.white70,
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: NetworkImage(receta.imagen),
+                    ),
                   ),
                 ),
               ),
@@ -74,7 +78,7 @@ class SliverPage extends StatelessWidget {
       child: Container(
         height: getMediaSize(context).height * 0.14,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: blanco90,
         ),
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         width: getMediaSize(context).width * 0.738,
@@ -165,42 +169,5 @@ class SliverPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Color getIconColorDificultad(Receta receta) {
-    switch (receta.dificultad) {
-      case "Baja":
-        return Colors.green;
-        break;
-      case "Media":
-        return Colors.orangeAccent;
-        break;
-      case "Alta":
-        return Colors.red;
-        break;
-    }
-  }
-
-  Image getIconCalificacion(Receta receta) {
-    if (receta.calificacion < 2.5)
-      return Image(
-        image: AssetImage("assets/iconos/heart0.png"),
-      );
-    if (receta.calificacion > 2.5 && receta.calificacion < 5.0)
-      return Image(
-        image: AssetImage("assets/iconos/heart25.png"),
-      );
-    if (receta.calificacion > 5.0 && receta.calificacion < 7.5)
-      return Image(
-        image: AssetImage("assets/iconos/heart50.png"),
-      );
-    if (receta.calificacion > 7.5 && receta.calificacion < 9.5)
-      return Image(
-        image: AssetImage("assets/iconos/heart75.png"),
-      );
-    if (receta.calificacion > 9.5)
-      return Image(
-        image: AssetImage("assets/iconos/heart100.png"),
-      );
   }
 }
