@@ -7,7 +7,7 @@ import 'package:guidefood/src/views/clippers/ClipperRecetas.dart';
 import 'package:guidefood/src/views/clippers/CustomClipperShadowWidget.dart';
 
 class SliverPage extends StatelessWidget {
-  Receta receta;
+  final Receta receta;
 
   SliverPage({this.receta});
   @override
@@ -23,28 +23,33 @@ class SliverPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Container(
-              alignment: Alignment.bottomCenter,
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              width: getMediaSize(context).width * 0.15,
-              height: getMediaSize(context).width * 0.15,
-              child: Hero(
-                tag: receta.id,
-                transitionOnUserGestures: true,
-                child: Container(
-                  decoration: BoxDecoration(
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 10,
-                          spreadRadius: 0.5,
-                          offset: Offset(0.0, 5.0)),
-                    ],
-                    color: Colors.white70,
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: NetworkImage(receta.imagen),
+            Hero(
+              tag: receta.id,
+              transitionOnUserGestures: true,
+              child: Container(
+                alignment: Alignment.bottomCenter,
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                width: getMediaSize(context).width * 0.15,
+                height: getMediaSize(context).width * 0.15,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, "detalle", arguments: receta);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 10,
+                            spreadRadius: 0.5,
+                            offset: Offset(0.0, 5.0)),
+                      ],
+                      color: Colors.white70,
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: NetworkImage(receta.imagen),
+                      ),
                     ),
                   ),
                 ),

@@ -14,7 +14,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var top = 0.0;
-  String imagenError = "assets/images/background-sliver-page.png";
+  String imagenTopic = "assets/images/recetasSliver.jpg";
+  String imagenError = "assets/images/no-conection.png";
 
   bool datosCargados = false;
   final apiProvider = new RecetasProvider();
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                   height: 1,
                 ),
                 background: Image.asset(
-                  "assets/images/recetasSliver.jpg",
+                  imagenTopic,
                   fit: BoxFit.fill,
                 ),
               );
@@ -62,39 +63,35 @@ class _HomePageState extends State<HomePage> {
           FutureBuilder(
             future: apiProvider.getRecetas(),
             builder: (context, projectSnap) {
-              //                Whether project = projectSnap.data[index]; //todo check your model
-              print('entra ');
+              //print('entra ');
               var childCount = 0;
               if (projectSnap.connectionState != ConnectionState.done ||
-                  projectSnap.hasData == null)
+                  projectSnap.hasData == null) {
                 childCount = 0;
-              else
+
+                return SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return Center(
+                          child: Container(
+                        width: getMediaSize(context).width,
+                        height: getMediaSize(context).height * 0.5,
+                        child: Image.asset(
+                          imagenError,
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ));
+                    },
+                    childCount: 1,
+                  ),
+                );
+              } else
                 childCount = projectSnap.data.length;
 
               return SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
-                  print('entra list');
-                  if (projectSnap.connectionState != ConnectionState.done) {
-                    print('entra en que no tiene datos');
-                    //todo handle state
-                    return Center(
-                        child:
-                            CircularProgressIndicator()); //todo set progress bar
-                  }
-                  if (projectSnap.hasData == null) {
-                    print('entra en que no tiene datos');
-                    return Center(
-                      child: Container(
-                        color: Colors.red,
-                        width: 50,
-                        height: 60,
-                      ),
-                    );
-                  }
                   print('entra en que tiene datos');
                   Receta receta = projectSnap.data[index];
-                  Receta ultimaReceta =
-                      projectSnap.data[projectSnap.data.length - 1];
 
                   return SliverPage(
                     receta: receta,

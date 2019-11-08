@@ -14,7 +14,7 @@ Color backgoroundColor = Colors.greenAccent;
 Color hintColor = Colors.indigo;
 Color primaryColor = Color(0xFF214703);
 Color primaryColorLight = Color.fromRGBO(77, 129, 5, 0.8);
-Color primaryColorDark = Color.fromRGBO(19, 32, 1, 0.8);
+Color primaryColorDark = Color.fromRGBO(19, 32, 1, 1);
 Color accentColor = Color.fromRGBO(62, 106, 3, 0.8);
 Color marron = Color.fromRGBO(124, 62, 14, 0.4);
 Color marron70 = Color.fromRGBO(124, 62, 14, 0.7);
@@ -32,7 +32,7 @@ TextStyle titleTile = TextStyle(
 );
 TextStyle calificationTile = TextStyle(
   decoration: TextDecoration.none,
-  color: primaryColorLight,
+  color: black,
   fontWeight: FontWeight.bold,
   fontSize: 16,
 );
@@ -52,5 +52,11 @@ TextStyle nombreDetalle = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 28,
 );
-
+TextStyle listaIntruccionesTextStyle = TextStyle(
+  decoration: TextDecoration.none,
+  color: primaryColorDark,
+  fontWeight: FontWeight.bold,
+  fontFamily: "Monserrat-Light",
+  fontSize: 18,
+);
 TextStyle paragraphTextStyle = TextStyle(fontSize: 18, color: black);

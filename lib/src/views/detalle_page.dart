@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:guidefood/src/controllers/api_provider.dart';
 import 'package:guidefood/src/controllers/centralizador_metodos.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
+import 'package:guidefood/src/models/ingredient.dart';
 import 'package:guidefood/src/models/receta.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 import 'package:guidefood/src/widgets/appBar_%20page.dart';
+import 'package:guidefood/src/widgets/ingredientes_horizontal.dart';
 
 class DetallePage extends StatefulWidget {
   @override
@@ -16,151 +19,173 @@ class _DetalleState extends State<DetallePage> {
     final size = getMediaSize(context);
     final Receta receta = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: getAppBar(context, primaryColorLight, 17),
       body: SingleChildScrollView(
-        child: Stack(
+        child: Column(
           children: <Widget>[
-            ClipPath(
-              child: Container(
-                decoration:
-                    BoxDecoration(color: primaryColorLight), //modificado
-                height: size.height / 4,
-                width: size.width,
-              ),
-              clipper: BottomWaveProfileClipper(),
-            ),
-            Column(children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(top: size.height * 0.2),
-                child: Row(
+            _parteSuperiorDesign(size, receta),
+            Column(
+              children: <Widget>[
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      _iconoDificultad(size, receta),
+                      _iconoCalificacion(size, receta),
+                    ],
+                  ),
+                  width: size.width,
+                  height: size.height * 0.07,
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: size.height * 0.01),
+                  width: size.width,
+                  child: Center(
+                    child: Text(
+                      receta.nombre,
+                      style: nombreDetalle,
+                    ),
+                  ),
+                  height: size.height * 0.09,
+                ),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(left: size.width * 0.1),
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.lens,
-                            color: getIconColorDificultad(receta),
-                            size: 28,
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(left: 3),
-                            child: Text(
-                              receta.dificultad,
-                              style: medianoTextStyle,
-                              textAlign: TextAlign.center,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(right: size.width * 0.1),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                              height: 30, child: getIconCalificacion(receta)),
-                          Container(
-                            padding: EdgeInsets.only(left: 3),
-                            child: Text(
-                              receta.calificacion.toString(),
-                              style: medianoTextStyle,
-                              textAlign: TextAlign.center,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+                    _apartadoCategoria(size, receta),
+                    _iconoDuracion(size, receta),
                   ],
                 ),
-                width: size.width,
-                height: size.height * 0.07,
-              ),
-              Container(
-                margin: EdgeInsets.only(top: size.height * 0.01),
-                width: size.width,
-                child: Center(
-                  child: Text(
-                    receta.nombre,
-                    style: nombreDetalle,
-                  ),
+                _filaDeIngredientes(size, receta),
+                _realizacion(size, receta),
+                SizedBox(height: 30),
+                Container(
+                  margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.3,
+                      right: MediaQuery.of(context).size.width * 0.3),
                 ),
-                height: size.height * 0.09,
-              ),
-              Container(
-                margin: EdgeInsets.only(top: size.height * 0.01),
-                color: marron,
-                width: size.width,
-                height: size.height * 0.07,
-              ),
-              Container(
-                height: size.height * 0.5,
-                width: size.height,
-                margin: EdgeInsets.only(
-                    top: size.height * 0.02,
-                    right: size.width * 0.05,
-                    left: size.width * 0.05,
-                    bottom: size.width * 0.05),
-                padding: EdgeInsets.only(
-                    left: size.width * 0.05, right: size.width * 0.05),
-                decoration: BoxDecoration(
-                  color: white,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 10,
-                        spreadRadius: 0.5,
-                        offset: Offset(0.0, 2.0)),
-                  ],
-                ),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 20),
-                    Text(
-                        //'${currentUser.firstName} ${currentUser.lastName}  '
-                        'NAME',
-                        style: titleTile,
-                        textAlign: TextAlign.center),
-                    SizedBox(height: 30),
-                    Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            Icons.email,
-                            color: primaryColor,
-                          ),
-                          SizedBox(width: 30),
-                          Text(
-                              //'${currentUser.email}'
-                              'email@example.com',
-                              style: medianoTextStyle),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 30),
-                    Text(
-                        //'${currentUser.aboutMe}'
-                        'About me',
-                        style: paragraphTextStyle,
-                        textAlign: TextAlign.justify),
-                    SizedBox(height: 20),
-                  ],
-                ),
-              ),
-              SizedBox(height: 30),
-              Container(
-                margin: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.3,
-                    right: MediaQuery.of(context).size.width * 0.3),
-              ),
-              SizedBox(height: 10)
-            ]),
-            _buildAvatar(receta, context),
+                SizedBox(height: 10)
+              ],
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _realizacion(Size size, Receta receta) {
+    return Stack(
+      children: <Widget>[
+        Container(
+          width: size.width * 0.9,
+          margin: EdgeInsets.only(
+              top: size.height * 0.04,
+              right: size.width * 0.05,
+              left: size.width * 0.05,
+              bottom: size.width * 0.05),
+          padding: EdgeInsets.only(
+              left: size.width * 0.05, right: size.width * 0.05),
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 10,
+                spreadRadius: 0.5,
+                offset: Offset(0.0, 2.0),
+              ),
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: _generarPasos(context, receta, size),
+          ),
+        ),
+        Center(
+          child: Container(
+            margin: EdgeInsets.only(top: size.width * 0.03),
+            width: size.width * 0.4,
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage("assets/images/background_realizacion.jpg"),
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 10,
+                    spreadRadius: 0.5,
+                    offset: Offset(0.0, 2.0)),
+              ],
+            ),
+            child: Text(
+                //'${currentUser.firstName} ${currentUser.lastName}  '
+                'Realización',
+                style: TextStyle(
+                  decoration: TextDecoration.none,
+                  color: white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                ),
+                textAlign: TextAlign.center),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _filaDeIngredientes(Size size, Receta receta) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: size.height * 0.03),
+      width: size.width * 0.9,
+      height: size.height * 0.15,
+      child: Row(
+        children: <Widget>[
+          Center(
+            child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 0.04),
+                width: size.width * 0.9,
+                height: size.height * 0.14,
+                child: Center(child: _getIngredientesCards(context, receta))),
+          ),
+        ],
+      ),
+      decoration: BoxDecoration(
+        color: white,
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10,
+            spreadRadius: 0.5,
+            offset: Offset(0.0, 2.0),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _apartadoCategoria(Size size, Receta receta) {
+    return Container(
+      padding: EdgeInsets.only(left: size.width * 0.07),
+      child: Column(
+        children: <Widget>[
+          Text(
+            'Categoría:',
+            style: medianoTextStyle,
+          ),
+          Container(
+            width: size.width * 0.2,
+            //padding: EdgeInsets.only(left: 3),
+            child: Text(
+              receta.categoria,
+              style: medianoTextStyle,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+            ),
+          )
+        ],
       ),
     );
   }
@@ -177,24 +202,202 @@ class _DetalleState extends State<DetallePage> {
       width: size.width * 0.48,
       height: size.width * 0.48,
       decoration: BoxDecoration(
-          color: white,
-          shape: BoxShape.circle,
+        color: white,
+        shape: BoxShape.circle,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              color: Colors.black26,
+              blurRadius: 10,
+              spreadRadius: 0.5,
+              offset: Offset(0.0, 2.0)),
+        ],
+      ),
+      child: Image(image: _avatar),
+    );
+  }
+
+  List<Widget> _generarPasos(BuildContext context, Receta receta, Size size) {
+    List<Widget> listaIntrucciones = new List<Widget>();
+    listaIntrucciones.add(
+      SizedBox(height: size.height * 0.07),
+    );
+    for (var i = 0; i < receta.descripcion.length; i++) {
+      final contenedor = new Container(
+        padding: EdgeInsets.all(size.width * 0.03),
+        margin: EdgeInsets.only(
+            bottom: 20, right: size.width * 0.02, left: size.width * 0.02),
+        child: Text(
+          receta.descripcion[i],
+          style: listaIntruccionesTextStyle,
+          textAlign: TextAlign.justify,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          image: DecorationImage(
+              image: AssetImage("assets/images/background_instrucciones.jpg"),
+              fit: BoxFit.fill),
           boxShadow: <BoxShadow>[
             BoxShadow(
-                color: Colors.black26,
-                blurRadius: 10,
-                spreadRadius: 0.5,
-                offset: Offset(0.0, 2.0)),
-          ]),
-      child: Hero(
-        transitionOnUserGestures: true,
-        tag: receta.id,
-        child: Container(
-          decoration: new BoxDecoration(
-            shape: BoxShape.circle,
-            image: new DecorationImage(fit: BoxFit.fitHeight, image: _avatar),
-          ),
+              color: Colors.black26,
+              blurRadius: 10,
+              spreadRadius: 0.5,
+              offset: Offset(0.0, 2.0),
+            ),
+          ],
         ),
+      );
+      listaIntrucciones.add(contenedor);
+    }
+    listaIntrucciones.add(
+      SizedBox(height: 20),
+    );
+    return listaIntrucciones;
+    // SizedBox(height: size.height * 0.07),
+    // SizedBox(height: 20),
+  }
+
+  FutureBuilder<List<Ingrediente>> _getIngredientesCards(
+      BuildContext context, Receta receta) {
+    final apiProvider = RecetasProvider();
+    print('Estamos en getINGREDIENTES');
+
+    return FutureBuilder(
+      future: apiProvider.getIngredientes(),
+      builder: (context, projectSnap) {
+        //print(projectSnap.data[2].toString());
+        var childCount = 0;
+        if (projectSnap.connectionState != ConnectionState.done ||
+            projectSnap.hasData == null)
+          childCount = 0;
+        else
+          childCount =
+              getListaIngredientesReceta(projectSnap.data, receta).length;
+
+        return ListView.builder(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemBuilder: ((context, index) {
+            List<Ingrediente> ingredientes = projectSnap.data;
+            Ingrediente ingrediente =
+                getListaIngredientesReceta(ingredientes, receta)[index];
+            childCount =
+                getListaIngredientesReceta(ingredientes, receta).length;
+            print(childCount.toString());
+            return IngredientesHorizontal(
+              ingrediente: ingrediente,
+              receta: receta,
+            );
+          }),
+          itemCount: childCount,
+        );
+      },
+    );
+  }
+
+  List<Ingrediente> getListaIngredientesReceta(
+      List<Ingrediente> lista, Receta receta) {
+    List<Ingrediente> listaReceta = new List<Ingrediente>();
+
+    for (var x = 0; x < receta.ingredientes.length; x++) {
+      for (var i = 0; i < lista.length; i++) {
+        if (receta.ingredientes[x][0] == lista[i].id) {
+          Ingrediente ingrediente = lista[i];
+          ingrediente.cantidad = receta.ingredientes[x][1];
+          //print("${ingrediente.nombre} con cantidad: ${ingrediente.cantidad}");
+          listaReceta.add(ingrediente);
+        }
+      }
+    }
+    return listaReceta;
+  }
+
+  Widget _iconoDuracion(Size size, Receta receta) {
+    return Container(
+      margin: EdgeInsets.only(right: size.width * 0.045),
+      child: Column(
+        children: <Widget>[
+          Container(
+            height: 30,
+            child: Image(
+              image: AssetImage("assets/iconos/clockImage.png"),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 5),
+            width: size.width * 0.2,
+            child: Text(
+              receta.duracion,
+              style: medianoTextStyle,
+              maxLines: 2,
+              textAlign: TextAlign.center,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _parteSuperiorDesign(Size size, Receta receta) {
+    return Stack(
+      children: <Widget>[
+        ClipPath(
+          child: Container(
+            margin: EdgeInsets.only(top: size.height * 0.05),
+            decoration: BoxDecoration(color: primaryColorDark), //modificado
+            height: size.height / 4,
+            width: size.width,
+          ),
+          clipper: BottomWaveProfileClipper(),
+        ),
+        Container(
+            height: size.height * 0.1,
+            child: getAppBar(context, primaryColorDark, 17)),
+        Container(
+          margin: EdgeInsets.only(top: size.height * 0.05),
+          child: _buildAvatar(receta, context),
+        ),
+      ],
+    );
+  }
+
+  Widget _iconoDificultad(Size size, Receta receta) {
+    return Container(
+      padding: EdgeInsets.only(left: size.width * 0.1),
+      child: Column(
+        children: <Widget>[
+          Icon(
+            Icons.lens,
+            color: getIconColorDificultad(receta),
+            size: 28,
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 3),
+            child: Text(
+              receta.dificultad,
+              style: medianoTextStyle,
+              textAlign: TextAlign.center,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _iconoCalificacion(Size size, Receta receta) {
+    return Container(
+      padding: EdgeInsets.only(right: size.width * 0.1),
+      child: Column(
+        children: <Widget>[
+          Container(height: 30, child: getIconCalificacion(receta)),
+          Container(
+            padding: EdgeInsets.only(left: 3),
+            child: Text(
+              receta.calificacion.toString(),
+              style: calificationTile,
+              textAlign: TextAlign.center,
+            ),
+          )
+        ],
       ),
     );
   }
