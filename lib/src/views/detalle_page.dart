@@ -36,17 +36,7 @@ class _DetalleState extends State<DetallePage> {
                   width: size.width,
                   height: size.height * 0.07,
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: size.height * 0.01),
-                  width: size.width,
-                  child: Center(
-                    child: Text(
-                      receta.nombre,
-                      style: nombreDetalle,
-                    ),
-                  ),
-                  height: size.height * 0.09,
-                ),
+                _nombreReceta(size, receta),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -59,8 +49,7 @@ class _DetalleState extends State<DetallePage> {
                 SizedBox(height: 30),
                 Container(
                   margin: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * 0.3,
-                      right: MediaQuery.of(context).size.width * 0.3),
+                      left: size.width * 0.3, right: size.width * 0.3),
                 ),
                 SizedBox(height: 10)
               ],
@@ -132,6 +121,20 @@ class _DetalleState extends State<DetallePage> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _nombreReceta(Size size, Receta receta) {
+    return Container(
+      margin: EdgeInsets.only(top: size.height * 0.01),
+      width: size.width,
+      child: Center(
+        child: Text(
+          receta.nombre,
+          style: nombreDetalle,
+        ),
+      ),
+      height: size.height * 0.09,
     );
   }
 
@@ -212,7 +215,11 @@ class _DetalleState extends State<DetallePage> {
               offset: Offset(0.0, 2.0)),
         ],
       ),
-      child: Image(image: _avatar),
+      child: Hero(
+          tag: receta.id,
+          child: FadeInImage(
+              placeholder: AssetImage("assets/images/loading-burger.gif"),
+              image: _avatar)),
     );
   }
 
@@ -259,7 +266,6 @@ class _DetalleState extends State<DetallePage> {
   FutureBuilder<List<Ingrediente>> _getIngredientesCards(
       BuildContext context, Receta receta) {
     final apiProvider = RecetasProvider();
-    print('Estamos en getINGREDIENTES');
 
     return FutureBuilder(
       future: apiProvider.getIngredientes(),
@@ -282,7 +288,6 @@ class _DetalleState extends State<DetallePage> {
                 getListaIngredientesReceta(ingredientes, receta)[index];
             childCount =
                 getListaIngredientesReceta(ingredientes, receta).length;
-            print(childCount.toString());
             return IngredientesHorizontal(
               ingrediente: ingrediente,
               receta: receta,
@@ -303,7 +308,6 @@ class _DetalleState extends State<DetallePage> {
         if (receta.ingredientes[x][0] == lista[i].id) {
           Ingrediente ingrediente = lista[i];
           ingrediente.cantidad = receta.ingredientes[x][1];
-          //print("${ingrediente.nombre} con cantidad: ${ingrediente.cantidad}");
           listaReceta.add(ingrediente);
         }
       }

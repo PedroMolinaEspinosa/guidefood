@@ -17,23 +17,23 @@ Color getIconColorDificultad(Receta receta) {
 }
 
 Image getIconCalificacion(Receta receta) {
-  if (receta.calificacion < 2.5)
+  if (receta.calificacion < 2.0)
     return Image(
       image: AssetImage("assets/iconos/heart0.png"),
     );
-  if (receta.calificacion > 2.5 && receta.calificacion < 5.0)
+  if (receta.calificacion >= 2.0 && receta.calificacion < 4.0)
     return Image(
       image: AssetImage("assets/iconos/heart25.png"),
     );
-  if (receta.calificacion > 5.0 && receta.calificacion < 7.5)
+  if (receta.calificacion >= 4.0 && receta.calificacion < 6.0)
     return Image(
       image: AssetImage("assets/iconos/heart50.png"),
     );
-  if (receta.calificacion > 7.5 && receta.calificacion < 9.5)
+  if (receta.calificacion >= 6.0 && receta.calificacion < 9.0)
     return Image(
       image: AssetImage("assets/iconos/heart75.png"),
     );
-  if (receta.calificacion > 9.5)
+  if (receta.calificacion >= 9.0)
     return Image(
       image: AssetImage("assets/iconos/heart100.png"),
     );

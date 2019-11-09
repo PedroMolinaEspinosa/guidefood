@@ -27,7 +27,7 @@ Widget getAppBar(BuildContext context, Color color, double margin) {
             ),
             child: IconButton(
               icon: Icon(Icons.arrow_back),
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => Navigator.maybePop(context),
             ),
           ),
           Container(

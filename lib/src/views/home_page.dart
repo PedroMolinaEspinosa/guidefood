@@ -22,13 +22,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return _getSliver();
+    Size size = getMediaSize(context);
+    return _getSliver(size);
   }
 
-  Widget _getSliver() {
+  Widget _getSliver(Size size) {
     return Container(
-      width: getMediaSize(context).width,
-      height: getMediaSize(context).height,
+      width: size.width,
+      height: size.height,
       decoration: BoxDecoration(
         color: white,
         image: DecorationImage(
@@ -58,12 +59,11 @@ class _HomePageState extends State<HomePage> {
             elevation: 0.0,
             pinned: true,
             floating: false,
-            expandedHeight: getMediaSize(context).height * 0.23,
+            expandedHeight: size.height * 0.23,
           ),
           FutureBuilder(
             future: apiProvider.getRecetas(),
-            builder: (context, projectSnap) {
-              //print('entra ');
+            builder: (BuildContext context, AsyncSnapshot<List> projectSnap) {
               var childCount = 0;
               if (projectSnap.connectionState != ConnectionState.done ||
                   projectSnap.hasData == null) {
@@ -74,8 +74,8 @@ class _HomePageState extends State<HomePage> {
                     (context, index) {
                       return Center(
                           child: Container(
-                        width: getMediaSize(context).width,
-                        height: getMediaSize(context).height * 0.5,
+                        width: size.width,
+                        height: size.height * 0.5,
                         child: Image.asset(
                           imagenError,
                           fit: BoxFit.fitWidth,
@@ -89,14 +89,15 @@ class _HomePageState extends State<HomePage> {
                 childCount = projectSnap.data.length;
 
               return SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  print('entra en que tiene datos');
-                  Receta receta = projectSnap.data[index];
-
-                  return SliverPage(
-                    receta: receta,
-                  );
-                }, childCount: childCount),
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    Receta receta = projectSnap.data[index];
+                    return SliverPage(
+                      receta: receta,
+                    );
+                  },
+                  childCount: childCount,
+                ),
               );
             },
           ),
