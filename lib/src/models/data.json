@@ -53,7 +53,7 @@
             "id": 8,
             "nombre": "Patata",
             "tipo": "Dorada Melody",
-            "imagen": "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c238.png",
+            "imagen": "https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c22f.png",
             "medida": "g"
         },
         {
@@ -61,7 +61,7 @@
             "nombre": "Pollo",
             "tipo": "Campero",
             "imagen": "https://freepngimg.com/thumb/chicken/1-chicken-head-png-image-thumb.png",
-            "medida": "uds"
+            "medida": "g"
         },
         {
             "id": 10,
@@ -319,7 +319,7 @@
                 ]
             ],
             "calificacion": 9.0,
-            "imagen": "https://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ce.png"
+            "imagen": "https://ibericosperu.com/600-large/tortilla-de-patata.jpg"
         },
         {
             "id": 3,
