@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
-import 'package:guidefood/src/styles/estilo.dart';
 
 Widget getAppBar(BuildContext context, Color color, double margin) {
   return PreferredSize(

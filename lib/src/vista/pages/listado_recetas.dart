@@ -3,16 +3,15 @@ import 'package:guidefood/src/controllers/api_provider.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/models/receta.dart';
 import 'package:guidefood/src/styles/estilo.dart';
-import 'package:guidefood/src/widgets/SliverPage.dart';
-import 'package:guidefood/src/widgets/appBar_%20page.dart';
-import '../models/ingredient.dart';
+import 'package:guidefood/src/vista/widgets/SliverItem.dart';
+import 'package:guidefood/src/vista/widgets/appBar_%20widget.dart';
 
-class HomePage extends StatefulWidget {
+class ListadoRecetas extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _ListadoRecetas createState() => _ListadoRecetas();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ListadoRecetas extends State<ListadoRecetas> {
   var top = 0.0;
   String imagenTopic = "assets/images/recetasSliver.jpg";
   String imagenError = "assets/images/no-conection.png";
@@ -92,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
                     Receta receta = projectSnap.data[index];
-                    return SliverPage(
+                    return SliverItem(
                       receta: receta,
                     );
                   },

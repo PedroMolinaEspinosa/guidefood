@@ -5,8 +5,8 @@ import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/models/ingredient.dart';
 import 'package:guidefood/src/models/receta.dart';
 import 'package:guidefood/src/styles/estilo.dart';
-import 'package:guidefood/src/widgets/appBar_%20page.dart';
-import 'package:guidefood/src/widgets/ingredientes_horizontal.dart';
+import 'package:guidefood/src/vista/widgets/appBar_%20widget.dart';
+import 'package:guidefood/src/vista/widgets/ingredientes_horizontal.dart';
 
 class DetallePage extends StatefulWidget {
   @override

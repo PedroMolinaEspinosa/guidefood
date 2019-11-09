@@ -3,13 +3,13 @@ import 'package:guidefood/src/controllers/centralizador_metodos.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/models/receta.dart';
 import 'package:guidefood/src/styles/estilo.dart';
-import 'package:guidefood/src/views/clippers/ClipperRecetas.dart';
-import 'package:guidefood/src/views/clippers/CustomClipperShadowWidget.dart';
+import 'package:guidefood/src/vista/widgets/clippers/ClipperRecetas.dart';
+import 'package:guidefood/src/vista/widgets/clippers/CustomClipperShadowWidget.dart';
 
-class SliverPage extends StatelessWidget {
+class SliverItem extends StatelessWidget {
   final Receta receta;
 
-  SliverPage({this.receta});
+  SliverItem({this.receta});
   @override
   Widget build(BuildContext context) {
     Size size = getMediaSize(context);
@@ -45,10 +45,15 @@ class SliverPage extends StatelessWidget {
                 ),
                 child: Hero(
                   tag: receta.id,
-                  child: FadeInImage(
-                    placeholder: AssetImage("assets/images/loading-burger.gif"),
-                    image: NetworkImage(receta.imagen),
-                    fit: BoxFit.fill,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: FadeInImage(
+                      placeholder: AssetImage("assets/images/loading.gif"),
+                      image: NetworkImage(receta.imagen),
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
               ),
