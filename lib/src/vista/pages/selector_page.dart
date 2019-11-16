@@ -103,7 +103,7 @@ class _SelectorPageState extends State<SelectorPage> {
               itemBuilder: (context, position) {
                 Ingrediente ingrediente = listaIngredientes[position];
 
-                return;
+                return DragBox(ingrediente, size);
               },
               itemCount: childCount,
             );
@@ -121,6 +121,7 @@ class _SelectorPageState extends State<SelectorPage> {
         child: Container(
           child: DragTarget(
             onAccept: (Ingrediente ingrediente) {
+              //comprobación si el ingrediente ya está añadido
               listaPasada.add(ingrediente);
             },
             builder: (
@@ -133,7 +134,13 @@ class _SelectorPageState extends State<SelectorPage> {
                     crossAxisCount: 2),
                 itemBuilder: (context, position) {
                   Ingrediente ingrediente = listaPasada[position];
+
+                  return ContenedorIngredienteWidget(
+                    ingrediente: ingrediente,
+                    size: size,
+                  );
                 },
+                itemCount: listaPasada.length,
               );
             },
           ),
@@ -201,14 +208,10 @@ class _SelectorPageState extends State<SelectorPage> {
 }
 
 class DragBox extends StatefulWidget {
-  final Offset initPos;
-  final String label;
-  final Color itemColor;
   final Ingrediente ingrediente;
   final Size size;
 
-  DragBox(
-      this.initPos, this.label, this.itemColor, this.ingrediente, this.size);
+  DragBox(this.ingrediente, this.size);
 
   @override
   DragBoxState createState() => DragBoxState();
@@ -220,7 +223,6 @@ class DragBoxState extends State<DragBox> {
   @override
   void initState() {
     super.initState();
-    position = widget.initPos;
   }
 
   @override
