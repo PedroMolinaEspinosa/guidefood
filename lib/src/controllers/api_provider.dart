@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 class RecetasProvider {
   bool _cargando = false;
   //String _apiKey = 'fbe9ea629dc8abd2036403c3d5a1e0c2';
-  String _urlRecetas = 'http://192.168.0.22:3000/recetas';
-  String _urlIngredientes = 'http://192.168.0.22:3000/ingredientes';
+  String _urlRecetas = 'http://192.168.0.25:3000/recetas';
+  String _urlIngredientes = 'http://192.168.0.25:3000/ingredientes';
 
   Future<List<Receta>> getRecetas() async {
     var resp;

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "938442949058",
+    "firebase_url": "https://guidefood-b4ba2.firebaseio.com",
+    "project_id": "guidefood-b4ba2",
+    "storage_bucket": "guidefood-b4ba2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938442949058:android:942ecdf756bf92dc16165b",
+        "android_client_info": {
+          "package_name": "com.example.guidefood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938442949058-35qfvp3jnlv8kg75na41kca739lnghsr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjpFo8iIwe32JFcc0w_vrmKzlQErQgzHU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "938442949058-35qfvp3jnlv8kg75na41kca739lnghsr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

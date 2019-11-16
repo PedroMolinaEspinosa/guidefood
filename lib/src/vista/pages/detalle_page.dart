@@ -232,7 +232,9 @@ class _DetalleState extends State<DetallePage> {
       final contenedor = new Container(
         padding: EdgeInsets.all(size.width * 0.03),
         margin: EdgeInsets.only(
-            bottom: 20, right: size.width * 0.02, left: size.width * 0.02),
+            bottom: size.height * 0.02,
+            right: size.width * 0.02,
+            left: size.width * 0.02),
         child: Text(
           receta.descripcion[i],
           style: listaIntruccionesTextStyle,
@@ -259,8 +261,6 @@ class _DetalleState extends State<DetallePage> {
       SizedBox(height: 20),
     );
     return listaIntrucciones;
-    // SizedBox(height: size.height * 0.07),
-    // SizedBox(height: 20),
   }
 
   FutureBuilder<List<Ingrediente>> _getIngredientesCards(
