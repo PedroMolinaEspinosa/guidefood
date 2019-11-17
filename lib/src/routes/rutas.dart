@@ -8,5 +8,6 @@ Map<String, WidgetBuilder> getAplicationRoutes() {
     '/': (BuildContext context) => ListadoRecetas(),
     'detalle': (BuildContext context) => DetallePage(),
     'selector': (BuildContext context) => SelectorPage(),
+    'listado': (BuildContext context) => ListadoRecetas(),
   };
 }

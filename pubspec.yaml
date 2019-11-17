@@ -63,17 +63,37 @@ flutter:
   # example:
 
   fonts:
-    - family: Montserrat
+    - family: Montserrat-Black
       fonts:
         - asset: assets/fuentes/Montserrat-Black.ttf
+
+    - family: Montserrat-Bold
+      fonts:
         - asset: assets/fuentes/Montserrat-Bold.ttf
+
+    - family: Montserrat-ExtraLight
+      fonts:
         - asset: assets/fuentes/Montserrat-ExtraLight.ttf
+
+    - family: Montserrat-Light
+      fonts:
         - asset: assets/fuentes/Montserrat-Light.ttf
+
+    - family: Montserrat-Medium
+      fonts:
         - asset: assets/fuentes/Montserrat-Medium.ttf
+
+    - family: Montserrat-Regular
+      fonts:
         - asset: assets/fuentes/Montserrat-Regular.ttf
+
+    - family: Montserrat-SemiBold
+      fonts:
         - asset: assets/fuentes/Montserrat-SemiBold.ttf
-        - asset: assets/fuentes/Montserrat-Thin.ttf       
-          style: normal
+
+    - family: Montserrat-Thin
+      fonts:
+        - asset: assets/fuentes/Montserrat-Thin.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

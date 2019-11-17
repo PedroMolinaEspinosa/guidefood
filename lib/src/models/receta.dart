@@ -1,7 +1,3 @@
-import 'package:guidefood/src/models/ingredient.dart';
-
-import 'dart:convert';
-
 class Recetas {
   List<Receta> items = new List();
 

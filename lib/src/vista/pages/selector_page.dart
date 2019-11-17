@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:guidefood/src/controllers/api_provider.dart';
+import 'package:guidefood/src/controllers/centralizador_metodos.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/models/ingredient.dart';
 import 'package:guidefood/src/models/receta.dart';
+import 'package:guidefood/src/styles/colores.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 import 'package:guidefood/src/vista/widgets/appBar_%20widget.dart';
 import 'package:guidefood/src/vista/widgets/contenedor_ingrediente_widget.dart';
+import 'package:guidefood/src/vista/widgets/custom_dialog_ingrediente.dart';
 
 class SelectorPage extends StatefulWidget {
   @override
@@ -20,9 +23,131 @@ class _SelectorPageState extends State<SelectorPage> {
   Widget build(BuildContext context) {
     Size size = getMediaSize(context);
     return Scaffold(
-      appBar:
-          getAppBar(context, primaryColor.withOpacity(0.8), size.width * 0.1),
-      body: _body(size),
+      endDrawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(
+              padding: EdgeInsets.all(0),
+              child: Image.asset(
+                "assets/images/drawerheader.gif",
+                fit: BoxFit.fill,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                GestureDetector(
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                    margin: EdgeInsets.all(size.width * 0.05),
+                    padding: EdgeInsets.only(
+                        right: size.height * 0.05,
+                        left: size.height * 0.05,
+                        bottom: size.height * 0.08,
+                        top: size.height * 0.02),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                            image: AssetImage(
+                                "assets/images/selectortile_drawer_background.jpg"),
+                            fit: BoxFit.fill,
+                            colorFilter: ColorFilter.srgbToLinearGamma())),
+                    child: Text(
+                      'Selector de ingredientes',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: TextStyle(
+                        color: primaryColorDark,
+                        decoration: TextDecoration.none,
+                        fontSize: size.width * 0.05,
+                        fontFamily: "Montserrat-Black",
+                      ),
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, "selector");
+                  },
+                ),
+                GestureDetector(
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                    margin: EdgeInsets.all(size.width * 0.05),
+                    padding: EdgeInsets.only(
+                        right: size.height * 0.05,
+                        left: size.height * 0.05,
+                        bottom: size.height * 0.08,
+                        top: size.height * 0.02),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                          image: AssetImage(
+                              "assets/images/listatile_drawer_background.jpg"),
+                          fit: BoxFit.fill,
+                          colorFilter:
+                              ColorFilter.mode(black20, BlendMode.colorBurn)),
+                    ),
+                    child: Text(
+                      'Lista de recetas',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: TextStyle(
+                        color: white,
+                        decoration: TextDecoration.none,
+                        fontSize: size.width * 0.05,
+                        fontFamily: "Montserrat-Black",
+                      ),
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, "listado");
+                  },
+                ),
+                GestureDetector(
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                    margin: EdgeInsets.all(size.width * 0.05),
+                    padding: EdgeInsets.only(
+                        right: size.height * 0.05,
+                        left: size.height * 0.05,
+                        bottom: size.height * 0.05,
+                        top: size.height * 0.05),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                            image: AssetImage(
+                                "assets/images/favoritostile_drawer_background.jpg"),
+                            fit: BoxFit.fill,
+                            colorFilter: ColorFilter.srgbToLinearGamma())),
+                    child: Text(
+                      'Favoritos',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: TextStyle(
+                        color: primaryColorDark,
+                        decoration: TextDecoration.none,
+                        fontSize: size.width * 0.05,
+                        fontFamily: "Montserrat-Black",
+                      ),
+                    ),
+                  ),
+                  onTap: () {
+                    //Navigator.pushNamed(context, "selector");
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      body: Stack(
+        children: <Widget>[
+          _body(size),
+          getAppBar(context, primaryColor.withOpacity(0), size.width * 0.05),
+        ],
+      ),
     );
   }
 
@@ -35,6 +160,7 @@ class _SelectorPageState extends State<SelectorPage> {
         ),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           _areaDeIntercambio(size),
           _areaRecetasMatches(size),
@@ -78,7 +204,7 @@ class _SelectorPageState extends State<SelectorPage> {
 
   Widget _gridSeleccion(Size size, List<Ingrediente> ingredientesPasados) {
     return Flexible(
-      flex: 4,
+      flex: 2,
       child: Container(
         padding: EdgeInsets.all(size.width * 0.02),
         child: FutureBuilder<List<Ingrediente>>(
@@ -127,7 +253,7 @@ class _SelectorPageState extends State<SelectorPage> {
 
   Widget _gridElegidos(Size size) {
     return Flexible(
-      flex: 3,
+      flex: 1,
       child: Container(
         padding: EdgeInsets.all(size.width * 0.02),
         child: Container(
@@ -135,8 +261,6 @@ class _SelectorPageState extends State<SelectorPage> {
             onAccept: (Ingrediente ingrediente) {
               if (!existeIngrediente(listaPasada, ingrediente)) {
                 listaPasada.add(ingrediente);
-                print("lista pasada en gridelegidos ${listaPasada.length}");
-
                 setState(() {});
               }
             },
@@ -154,12 +278,18 @@ class _SelectorPageState extends State<SelectorPage> {
                   return Stack(
                     fit: StackFit.expand,
                     children: <Widget>[
-                      ContenedorIngredienteWidget(
-                        seleccionOElegido: false,
-                        ingrediente: ingrediente,
-                        size: size,
-                        tamanno: size.width * 0.22,
-                        color: Colors.orangeAccent,
+                      GestureDetector(
+                        onTap: () {
+                          CustomDialogIngrediente(context, ingrediente, size)
+                              .build(context);
+                        },
+                        child: ContenedorIngredienteWidget(
+                          seleccionOElegido: false,
+                          ingrediente: ingrediente,
+                          size: size,
+                          tamanno: size.width * 0.22,
+                          color: Colors.orangeAccent,
+                        ),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -190,6 +320,9 @@ class _SelectorPageState extends State<SelectorPage> {
     return Container(
       width: size.width,
       height: size.height * 0.25,
+      padding: EdgeInsets.symmetric(
+        horizontal: size.width * 0.01,
+      ),
       margin: EdgeInsets.symmetric(
         horizontal: size.width * 0.04,
       ),
@@ -222,7 +355,6 @@ class _SelectorPageState extends State<SelectorPage> {
             recetasMatches = _recetasMatches(recetas, listaPasada);
             childCount = recetasMatches.length;
             //print("${recetasMatches.length} recetasmatches2");
-            print("lista pasada en futurematches ${listaPasada.length}");
           } else {
             recetasMatches = [];
             childCount = 0;
@@ -231,15 +363,11 @@ class _SelectorPageState extends State<SelectorPage> {
           // print("${recetasMatches.length} recetasmatches");
 
           return ListView.builder(
+            padding: EdgeInsets.all(size.width * 0.02),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               Receta receta = recetasMatches[index];
-              return Container(
-                color: Colors.red,
-                width: 100,
-                height: 100,
-                child: Image.network(receta.imagen),
-              );
+              return _contenedorRecetaMatches(size, receta);
             },
             itemCount: childCount,
           );
@@ -247,6 +375,105 @@ class _SelectorPageState extends State<SelectorPage> {
       ),
     );
   }
+
+  Widget _contenedorRecetaMatches(Size size, Receta receta) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, "detalle", arguments: receta);
+      },
+      child: Container(
+        padding: EdgeInsets.all(size.width * 0.01),
+        margin: EdgeInsets.all(size.width * 0.01),
+        height: size.height * 0.25,
+        width: size.width * 0.2,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: white,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 7,
+              spreadRadius: 3.5,
+              offset: Offset(0.0, 2.0),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Hero(
+              tag: receta.id,
+              child: Container(
+                width: size.width * 0.17,
+                height: size.width * 0.17,
+                decoration: BoxDecoration(
+                  image: DecorationImage(image: NetworkImage(receta.imagen)),
+                  shape: BoxShape.circle,
+                  color: white,
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 3,
+                      spreadRadius: 1.5,
+                      offset: Offset(0.0, 1.0),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                  top: size.width * 0.01,
+                  right: size.width * 0.01,
+                  left: size.width * 0.01),
+              child: Text(
+                receta.nombre,
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 3,
+                style: TextStyle(
+                    color: primaryColor,
+                    decoration: TextDecoration.none,
+                    fontFamily: "Montserrat-Medium",
+                    fontSize: size.width * 0.025),
+              ),
+            ),
+            Container(
+              height: size.height * 0.05,
+              width: size.width * 0.17,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  _iconoDificultad(size, receta),
+                  _iconoCalificacion(size, receta),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+Widget _iconoDificultad(Size size, Receta receta) {
+  return Container(
+    height: size.width * 0.04,
+    alignment: Alignment.center,
+    child: Icon(
+      Icons.lens,
+      color: getIconColorDificultad(receta),
+      size: size.width * 0.04,
+    ),
+  );
+}
+
+Widget _iconoCalificacion(Size size, Receta receta) {
+  return Container(
+    child: Container(
+        height: size.width * 0.04, child: getIconCalificacion(receta)),
+  );
 }
 
 List<Receta> _recetasMatches(
@@ -265,12 +492,9 @@ List<Receta> _recetasMatches(
     }
     if (matches == listaPasada.length) {
       recetasMatches.add(recetas[j]);
-      //print(recetas[j].nombre);
-
     }
     matches = 0;
   }
-  //print("lista pasada en getmatches ${listaPasada.length}");
 
   return recetasMatches;
 }
