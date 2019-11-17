@@ -192,14 +192,14 @@
         {
             "id": 29,
             "nombre": "Laurel",
-            "tipo": "Especias",
+            "tipo": "",
             "imagen": "https://www.naranjasdelguadalquivir.com/images/laurel.png",
             "medida": "hoja"
         },
         {
             "id": 30,
-            "nombre": "Pimentón dulce",
-            "tipo": "Especias",
+            "nombre": "Pimentón",
+            "tipo": "dulce",
             "imagen": "https://annonagranel.com/wp-content/uploads/2018/10/pimenton-dulce.png",
             "medida": "mg"
         },

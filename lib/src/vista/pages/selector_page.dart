@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guidefood/src/controllers/api_provider.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/models/ingredient.dart';
+import 'package:guidefood/src/models/receta.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 import 'package:guidefood/src/vista/widgets/appBar_%20widget.dart';
 import 'package:guidefood/src/vista/widgets/contenedor_ingrediente_widget.dart';
@@ -19,7 +20,8 @@ class _SelectorPageState extends State<SelectorPage> {
   Widget build(BuildContext context) {
     Size size = getMediaSize(context);
     return Scaffold(
-      appBar: getAppBar(context, marron70, size.width * 0.1),
+      appBar:
+          getAppBar(context, primaryColor.withOpacity(0.8), size.width * 0.1),
       body: _body(size),
     );
   }
@@ -76,7 +78,7 @@ class _SelectorPageState extends State<SelectorPage> {
 
   Widget _gridSeleccion(Size size, List<Ingrediente> ingredientesPasados) {
     return Flexible(
-      flex: 1,
+      flex: 4,
       child: Container(
         padding: EdgeInsets.all(size.width * 0.02),
         child: FutureBuilder<List<Ingrediente>>(
@@ -88,6 +90,7 @@ class _SelectorPageState extends State<SelectorPage> {
               childCount = 0;
               return Center(
                   child: Container(
+                alignment: Alignment.center,
                 width: size.width,
                 height: size.height * 0.5,
                 child: Text("Error de conexion"),
@@ -98,6 +101,7 @@ class _SelectorPageState extends State<SelectorPage> {
             List<Ingrediente> listaIngredientes = snapshot.data;
 
             return GridView.builder(
+              padding: EdgeInsets.only(right: size.width * 0.1),
               gridDelegate:
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemBuilder: (context, position) {
@@ -113,16 +117,28 @@ class _SelectorPageState extends State<SelectorPage> {
     );
   }
 
+  bool existeIngrediente(
+      List<Ingrediente> listaPasada, Ingrediente ingrediente) {
+    for (var i = 0; i < listaPasada.length; i++) {
+      if (listaPasada[i].id == ingrediente.id) return true;
+    }
+    return false;
+  }
+
   Widget _gridElegidos(Size size) {
     return Flexible(
-      flex: 1,
+      flex: 3,
       child: Container(
         padding: EdgeInsets.all(size.width * 0.02),
         child: Container(
           child: DragTarget(
             onAccept: (Ingrediente ingrediente) {
-              //comprobación si el ingrediente ya está añadido
-              listaPasada.add(ingrediente);
+              if (!existeIngrediente(listaPasada, ingrediente)) {
+                listaPasada.add(ingrediente);
+                print("lista pasada en gridelegidos ${listaPasada.length}");
+
+                setState(() {});
+              }
             },
             builder: (
               BuildContext context,
@@ -131,13 +147,34 @@ class _SelectorPageState extends State<SelectorPage> {
             ) {
               return GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
+                    crossAxisCount: 1),
                 itemBuilder: (context, position) {
                   Ingrediente ingrediente = listaPasada[position];
 
-                  return ContenedorIngredienteWidget(
-                    ingrediente: ingrediente,
-                    size: size,
+                  return Stack(
+                    fit: StackFit.expand,
+                    children: <Widget>[
+                      ContenedorIngredienteWidget(
+                        seleccionOElegido: false,
+                        ingrediente: ingrediente,
+                        size: size,
+                        tamanno: size.width * 0.22,
+                        color: Colors.orangeAccent,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() => listaPasada.remove(ingrediente));
+                        },
+                        child: Container(
+                          //margin: EdgeInsets.all(size.width * 0.01),
+                          alignment: Alignment.topRight,
+                          child: Icon(
+                            Icons.cancel,
+                            color: primaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
                   );
                 },
                 itemCount: listaPasada.length,
@@ -168,43 +205,74 @@ class _SelectorPageState extends State<SelectorPage> {
           ),
         ],
       ),
+      child: FutureBuilder<List<Receta>>(
+        future: provider.getRecetas(),
+        builder: (context, snapshot) {
+          var childCount = 0;
+          List<Receta> recetasMatches = new List<Receta>();
+          if (snapshot.connectionState != ConnectionState.done ||
+              snapshot.hasData == null)
+            childCount = 0;
+          else
+            childCount = snapshot.data.length;
+
+          List<Receta> recetas = snapshot.data ?? [];
+          if (listaPasada.length > 0) {
+            recetasMatches = new List<Receta>();
+            recetasMatches = _recetasMatches(recetas, listaPasada);
+            childCount = recetasMatches.length;
+            //print("${recetasMatches.length} recetasmatches2");
+            print("lista pasada en futurematches ${listaPasada.length}");
+          } else {
+            recetasMatches = [];
+            childCount = 0;
+          }
+          // print("cuenta de childcount $childCount");
+          // print("${recetasMatches.length} recetasmatches");
+
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              Receta receta = recetasMatches[index];
+              return Container(
+                color: Colors.red,
+                width: 100,
+                height: 100,
+                child: Image.network(receta.imagen),
+              );
+            },
+            itemCount: childCount,
+          );
+        },
+      ),
     );
   }
+}
 
-  FutureBuilder<List<Ingrediente>> _getIngredientesCards(BuildContext context) {
-    final apiProvider = RecetasProvider();
+List<Receta> _recetasMatches(
+    List<Receta> recetas, List<Ingrediente> listaPasada) {
+  List<Receta> recetasMatches = new List<Receta>();
+  int matches = 0;
 
-    return FutureBuilder(
-      future: apiProvider.getIngredientes(),
-      builder: (context, snapshot) {
-        //print(snapshot.data[2].toString());
-        var childCount = 0;
-        if (snapshot.connectionState != ConnectionState.done ||
-            snapshot.hasData == null)
-          childCount = 0;
-        else
-          childCount = snapshot.data.length;
+  for (var j = 0; j < recetas.length; j++) {
+    for (var x = 0; x < recetas[j].ingredientes.length; x++) {
+      for (var i = 0; i < listaPasada.length; i++) {
+        if (listaPasada[i].id == recetas[j].ingredientes[x][0]) {
+          print(listaPasada[i].nombre);
+          matches++;
+        }
+      }
+    }
+    if (matches == listaPasada.length) {
+      recetasMatches.add(recetas[j]);
+      //print(recetas[j].nombre);
 
-        return ListView.builder(
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          itemBuilder: ((context, index) {
-            List<Ingrediente> ingredientes = snapshot.data;
-            Ingrediente ingrediente = ingredientes[index];
-            childCount = ingredientes.length;
-            return Container(
-              width: 50,
-              height: 50,
-              child: Image(
-                image: NetworkImage(ingrediente.imagen),
-              ),
-            );
-          }),
-          itemCount: childCount,
-        );
-      },
-    );
+    }
+    matches = 0;
   }
+  //print("lista pasada en getmatches ${listaPasada.length}");
+
+  return recetasMatches;
 }
 
 class DragBox extends StatefulWidget {
@@ -231,7 +299,9 @@ class DragBoxState extends State<DragBox> {
       child: Draggable(
         data: widget.ingrediente,
         child: ContenedorIngredienteWidget(
-            size: widget.size, ingrediente: widget.ingrediente),
+            seleccionOElegido: true,
+            size: widget.size,
+            ingrediente: widget.ingrediente),
         onDraggableCanceled: (velocity, offset) {
           setState(() {
             position = offset;
@@ -239,8 +309,11 @@ class DragBoxState extends State<DragBox> {
         },
         feedback: Opacity(
           opacity: 0.7,
-          child: ContenedorIngredienteWidget(
-              size: widget.size, ingrediente: widget.ingrediente),
+          child: Container(
+            child: Image.network(widget.ingrediente.imagen),
+            width: widget.size.width * 0.2,
+            height: widget.size.width * 0.2,
+          ),
         ),
       ),
     );
