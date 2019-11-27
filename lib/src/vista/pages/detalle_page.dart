@@ -6,6 +6,7 @@ import 'package:guidefood/src/models/ingredient.dart';
 import 'package:guidefood/src/models/receta.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 import 'package:guidefood/src/vista/widgets/appBar_%20widget.dart';
+import 'package:guidefood/src/vista/widgets/drawer.dart';
 import 'package:guidefood/src/vista/widgets/ingredientes_horizontal.dart';
 
 class DetallePage extends StatefulWidget {
@@ -14,11 +15,15 @@ class DetallePage extends StatefulWidget {
 }
 
 class _DetalleState extends State<DetallePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     final size = getMediaSize(context);
     final Receta receta = ModalRoute.of(context).settings.arguments;
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: DrawerGuideFood(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -346,8 +351,12 @@ class _DetalleState extends State<DetallePage> {
       children: <Widget>[
         ClipPath(
           child: Container(
-            margin: EdgeInsets.only(top: size.height * 0.05),
-            decoration: BoxDecoration(color: primaryColorDark), //modificado
+            //margin: EdgeInsets.only(top: size.height * 0.05),
+            decoration: BoxDecoration(
+                color: primaryColorDark,
+                image: DecorationImage(
+                    image: AssetImage("assets/images/maera.jpg"),
+                    fit: BoxFit.fill)), //modificado
             height: size.height / 4,
             width: size.width,
           ),
@@ -355,7 +364,7 @@ class _DetalleState extends State<DetallePage> {
         ),
         Container(
             height: size.height * 0.1,
-            child: getAppBar(context, primaryColorDark, 17)),
+            child: getAppBar(context, transparente, 17, _scaffoldKey)),
         Container(
           margin: EdgeInsets.only(top: size.height * 0.05),
           child: _buildAvatar(receta, context),
