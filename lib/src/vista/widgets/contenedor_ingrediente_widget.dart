@@ -26,6 +26,7 @@ class ContenedorIngredienteWidget extends StatelessWidget {
           width: tamanno,
           height: tamanno,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
                 width: size.width * 0.1,
