@@ -4,12 +4,12 @@ import 'package:guidefood/src/controllers/centralizador_metodos.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/models/ingredient.dart';
 import 'package:guidefood/src/models/receta.dart';
-import 'package:guidefood/src/styles/colores.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 import 'package:guidefood/src/vista/widgets/appBar_%20widget.dart';
 import 'package:guidefood/src/vista/widgets/contenedor_ingrediente_widget.dart';
 import 'package:guidefood/src/vista/widgets/custom_dialog_ingrediente.dart';
 import 'package:guidefood/src/vista/widgets/drawer.dart';
+import 'package:guidefood/src/vista/widgets/grid_seleccion.dart';
 
 class SelectorPage extends StatefulWidget {
   @override
@@ -65,7 +65,7 @@ class _SelectorPageState extends State<SelectorPage> {
       height: size.height * 0.6,
       child: Row(
         children: <Widget>[
-          _gridSeleccion(size, ingredientesPasados),
+          GridSeleccion(ingredientesPasados),
           Container(
             color: black,
             height: size.height * 0.57,
@@ -85,47 +85,6 @@ class _SelectorPageState extends State<SelectorPage> {
             offset: Offset(0.0, 2.0),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _gridSeleccion(Size size, List<Ingrediente> ingredientesPasados) {
-    return Flexible(
-      flex: 2,
-      child: Container(
-        padding: EdgeInsets.all(size.width * 0.02),
-        child: FutureBuilder<List<Ingrediente>>(
-          future: provider.getIngredientes(),
-          builder: (context, snapshot) {
-            var childCount = 0;
-            if (snapshot.connectionState != ConnectionState.done ||
-                snapshot.hasData == null) {
-              childCount = 0;
-              return Center(
-                  child: Container(
-                alignment: Alignment.center,
-                width: size.width,
-                height: size.height * 0.5,
-                child: Text("Error de conexion"),
-              ));
-            } else
-              childCount = snapshot.data.length;
-
-            List<Ingrediente> listaIngredientes = snapshot.data;
-
-            return GridView.builder(
-              padding: EdgeInsets.only(right: size.width * 0.1),
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-              itemBuilder: (context, position) {
-                Ingrediente ingrediente = listaIngredientes[position];
-
-                return DragBox(ingrediente, size);
-              },
-              itemCount: childCount,
-            );
-          },
-        ),
       ),
     );
   }
@@ -379,49 +338,4 @@ List<Receta> _recetasMatches(
   }
 
   return recetasMatches;
-}
-
-class DragBox extends StatefulWidget {
-  final Ingrediente ingrediente;
-  final Size size;
-
-  DragBox(this.ingrediente, this.size);
-
-  @override
-  DragBoxState createState() => DragBoxState();
-}
-
-class DragBoxState extends State<DragBox> {
-  Offset position = Offset(0.0, 0.0);
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Draggable(
-        data: widget.ingrediente,
-        child: ContenedorIngredienteWidget(
-            seleccionOElegido: true,
-            size: widget.size,
-            ingrediente: widget.ingrediente),
-        onDraggableCanceled: (velocity, offset) {
-          setState(() {
-            position = offset;
-          });
-        },
-        feedback: Opacity(
-          opacity: 0.7,
-          child: Container(
-            child: Image.network(widget.ingrediente.imagen),
-            width: widget.size.width * 0.2,
-            height: widget.size.width * 0.2,
-          ),
-        ),
-      ),
-    );
-  }
 }

@@ -60,3 +60,14 @@ TextStyle listaIntruccionesTextStyle = TextStyle(
   fontSize: 18,
 );
 TextStyle paragraphTextStyle = TextStyle(fontSize: 18, color: black);
+
+class MontserratFontFamily {
+  static const String medium = 'Montserrat-Medium';
+  static const String light = 'Montserrat-Light';
+  static const String bold = 'Montserrat-Bold';
+  static const String regular = 'Montserrat-Medium';
+  static const String black = "Montserrat-black";
+  static const String semiBold = "Montserrat-SemiBold";
+  static const String extraLight = "Montserrat-ExtraLight";
+  static const String thin = "Montserrat-Thin";
+}

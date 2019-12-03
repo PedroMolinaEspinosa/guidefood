@@ -17,7 +17,9 @@ Depends on all your plugins, and provides a function to register them.
   s.source           = { :path => '.' }
   s.public_header_files = './Classes/**/*.h'
   s.dependency 'Flutter'
+  s.dependency 'firebase_analytics'
   s.dependency 'firebase_auth'
   s.dependency 'firebase_core'
+  s.dependency 'firebase_messaging'
   s.dependency 'google_sign_in'
 end

@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>938442949058-8etf7um6t4hk3h3247k4ap03it449lit.apps.googleusercontent.com</string>
+	<string>722826317312-ndsi13omd580achi8uln51f81t6fblah.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.938442949058-8etf7um6t4hk3h3247k4ap03it449lit</string>
+	<string>com.googleusercontent.apps.722826317312-ndsi13omd580achi8uln51f81t6fblah</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>722826317312-f02j369pd3apjnogg5g8j8pe37cbtv43.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBoAswMZUiImLVRM9U67TVvwvcT261kTwY</string>
+	<string>AIzaSyAnkGIIWLe0Up-xyuRgs4AgXilrOtFzHu4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>938442949058</string>
+	<string>722826317312</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.guidefood</string>
 	<key>PROJECT_ID</key>
-	<string>guidefood-b4ba2</string>
+	<string>guidefood-29c08</string>
 	<key>STORAGE_BUCKET</key>
-	<string>guidefood-b4ba2.appspot.com</string>
+	<string>guidefood-29c08.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:938442949058:ios:152c4cac51f7126116165b</string>
+	<string>1:722826317312:ios:3b15bfd6b1f492a7c792e5</string>
 	<key>DATABASE_URL</key>
-	<string>https://guidefood-b4ba2.firebaseio.com</string>
+	<string>https://guidefood-29c08.firebaseio.com</string>
 </dict>
 </plist>

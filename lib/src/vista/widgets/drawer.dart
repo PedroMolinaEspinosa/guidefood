@@ -78,7 +78,7 @@ class DrawerGuideFood extends StatelessWidget {
               ),
               GestureDetector(
                 child: Container(
-                  alignment: Alignment.topCenter,
+                  alignment: Alignment.center,
                   margin: EdgeInsets.all(size.width * 0.05),
                   padding: EdgeInsets.only(
                       right: size.height * 0.05,
@@ -94,15 +94,17 @@ class DrawerGuideFood extends StatelessWidget {
                         colorFilter:
                             ColorFilter.mode(black20, BlendMode.colorBurn)),
                   ),
-                  child: Text(
-                    'Lista de recetas',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    style: TextStyle(
-                      color: white,
-                      decoration: TextDecoration.none,
-                      fontSize: size.width * 0.05,
-                      fontFamily: "Montserrat-Black",
+                  child: Center(
+                    child: Text(
+                      'Lista de recetas',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: TextStyle(
+                        color: white,
+                        decoration: TextDecoration.none,
+                        fontSize: size.width * 0.05,
+                        fontFamily: "Montserrat-Black",
+                      ),
                     ),
                   ),
                 ),
@@ -139,7 +141,7 @@ class DrawerGuideFood extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  //Navigator.pushNamed(context, "selector");
+                  Navigator.pushReplacementNamed(context, "login");
                 },
               ),
             ],
