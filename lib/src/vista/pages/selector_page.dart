@@ -31,8 +31,12 @@ class _SelectorPageState extends State<SelectorPage> {
       body: Stack(
         children: <Widget>[
           _body(size),
-          getAppBar(context, primaryColor.withOpacity(0), size.width * 0.05,
-              _scaffoldKey),
+          getAppBar(
+            context,
+            primaryColor.withOpacity(0),
+            size.width * 0.05,
+            _scaffoldKey,
+          ),
         ],
       ),
     );

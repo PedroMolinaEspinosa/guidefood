@@ -367,7 +367,12 @@ class _DetalleState extends State<DetallePage> {
         ),
         Container(
             height: size.height * 0.1,
-            child: getAppBar(context, transparente, 17, _scaffoldKey)),
+            child: getAppBar(
+              context,
+              transparente,
+              17,
+              _scaffoldKey,
+            )),
         Container(
           margin: EdgeInsets.only(top: size.height * 0.05),
           child: _buildAvatar(receta, context),

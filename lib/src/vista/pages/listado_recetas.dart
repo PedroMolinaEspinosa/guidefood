@@ -7,12 +7,7 @@ import 'package:guidefood/src/vista/widgets/SliverItem.dart';
 import 'package:guidefood/src/vista/widgets/appBar_%20widget.dart';
 import 'package:guidefood/src/vista/widgets/drawer.dart';
 
-class ListadoRecetas extends StatefulWidget {
-  @override
-  _ListadoRecetas createState() => _ListadoRecetas();
-}
-
-class _ListadoRecetas extends State<ListadoRecetas> {
+class ListadoRecetasPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   var top = 0.0;
@@ -25,10 +20,10 @@ class _ListadoRecetas extends State<ListadoRecetas> {
   @override
   Widget build(BuildContext context) {
     Size size = getMediaSize(context);
-    return _getSliver(size);
+    return _getSliver(size, context);
   }
 
-  Widget _getSliver(Size size) {
+  Widget _getSliver(Size size, BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       endDrawer: DrawerGuideFood(),
@@ -48,7 +43,12 @@ class _ListadoRecetas extends State<ListadoRecetas> {
                 new Container(),
               ],
               automaticallyImplyLeading: false,
-              title: getAppBar(context, transparente, 0, _scaffoldKey),
+              title: getAppBar(
+                context,
+                transparente,
+                0,
+                _scaffoldKey,
+              ),
               flexibleSpace: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
                 top = constraints.biggest.height;

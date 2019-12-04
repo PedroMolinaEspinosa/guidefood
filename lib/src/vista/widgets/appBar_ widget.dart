@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
+import 'package:guidefood/src/styles/estilo.dart';
 
 Widget getAppBar(BuildContext context, Color color, double margin,
     GlobalKey<ScaffoldState> _scaffoldKey) {
@@ -46,7 +47,7 @@ Widget getAppBar(BuildContext context, Color color, double margin,
             child: IconButton(
               icon: Icon(Icons.dehaze),
               onPressed: () {
-                _scaffoldKey.currentState.openDrawer();
+                _scaffoldKey.currentState.openEndDrawer();
               },
             ),
           ),

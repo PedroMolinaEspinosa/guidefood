@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: guidefoodTheme,
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'selector',
+      initialRoute: 'splash',
       routes: getAplicationRoutes(),
     );
   }
