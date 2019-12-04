@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guidefood/src/controllers/sign_in.dart';
 import 'package:guidefood/src/vista/pages/favoritos_page.dart';
@@ -31,16 +32,20 @@ class _LoginPageState extends State<LoginPage> {
   Widget _signInButton() {
     return OutlineButton(
       splashColor: Colors.grey,
-      onPressed: () {
-        signInWithGoogle().whenComplete(() {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return FavoritosPage();
-              },
-            ),
-          );
-        });
+      onPressed: () async {
+        await signInWithGoogle()
+            .then((FirebaseUser user) => print(user.displayName))
+            .catchError((e) => print(e));
+
+        // whenComplete(() {
+        //   Navigator.of(context).push(
+        //     MaterialPageRoute(
+        //       builder: (context) {
+        //         return FavoritosPage();
+        //       },
+        //     ),
+        //   );
+        // });
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,

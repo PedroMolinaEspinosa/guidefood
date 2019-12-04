@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "722826317312-f02j369pd3apjnogg5g8j8pe37cbtv43.apps.googleusercontent.com",
+          "client_id": "722826317312-omr4cpqhat852938458a9su9k3htr4is.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.guidefood",
-            "certificate_hash": "74c0526df88978ed21c338abcf95825ab0697302"
+            "certificate_hash": "fee683f596d62dfdd3de6f7f95c17354354b2d10"
           }
         },
         {

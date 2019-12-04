@@ -249,7 +249,6 @@ class _SelectorPageState extends State<SelectorPage> {
                 width: size.width * 0.17,
                 height: size.width * 0.17,
                 decoration: BoxDecoration(
-                  image: DecorationImage(image: NetworkImage(receta.imagen)),
                   shape: BoxShape.circle,
                   color: white,
                   boxShadow: <BoxShadow>[
@@ -260,6 +259,10 @@ class _SelectorPageState extends State<SelectorPage> {
                       offset: Offset(0.0, 1.0),
                     ),
                   ],
+                ),
+                child: FadeInImage(
+                  image: NetworkImage(receta.imagen),
+                  placeholder: AssetImage("assets/images/loading.gif"),
                 ),
               ),
             ),

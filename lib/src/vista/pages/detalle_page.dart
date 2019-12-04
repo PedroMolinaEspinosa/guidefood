@@ -132,11 +132,14 @@ class _DetalleState extends State<DetallePage> {
   Widget _nombreReceta(Size size, Receta receta) {
     return Container(
       margin: EdgeInsets.only(top: size.height * 0.01),
-      width: size.width,
+      width: size.width * 0.7,
       child: Center(
         child: Text(
           receta.nombre,
           style: nombreDetalle,
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 2,
         ),
       ),
       height: size.height * 0.09,
