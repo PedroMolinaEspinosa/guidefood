@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "722826317312-u2q7hd893rfpoqtpove0upink7ppho4j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.guidefood",
+            "certificate_hash": "cd439205aef3460fe409c9525a82706cbdf67a86"
+          }
+        },
+        {
+          "client_id": "722826317312-ckfm2dn6h398dss7a8pq7v0in1iucnc4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.guidefood",
+            "certificate_hash": "74c0526df88978ed21c338abcf95825ab0697302"
+          }
+        },
+        {
           "client_id": "722826317312-omr4cpqhat852938458a9su9k3htr4is.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
