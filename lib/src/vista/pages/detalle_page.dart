@@ -225,9 +225,11 @@ class _DetalleState extends State<DetallePage> {
       ),
       child: Hero(
           tag: receta.id,
-          child: FadeInImage(
-              placeholder: AssetImage("assets/images/loading.gif"),
-              image: _avatar)),
+          child: ClipOval(
+            child: FadeInImage(
+                placeholder: AssetImage("assets/images/loading.gif"),
+                image: _avatar),
+          )),
     );
   }
 

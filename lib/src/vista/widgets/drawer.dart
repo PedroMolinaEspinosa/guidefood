@@ -97,6 +97,7 @@ class DrawerGuideFood extends StatelessWidget {
                   child: Center(
                     child: Text(
                       'Lista de recetas',
+                      textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       style: TextStyle(
