@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guidefood/src/controllers/sign_in.dart';
+import 'package:guidefood/src/styles/colores.dart';
+import 'package:guidefood/src/styles/estilo.dart';
 import 'package:guidefood/src/vista/pages/favoritos_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,15 +15,24 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlutterLogo(size: 150),
               SizedBox(height: 50),
               _signInButton(),
+            ],
+          ),
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Color(0xFF006AB3),
+              Color(0xFF94CF48),
             ],
           ),
         ),
@@ -30,46 +41,61 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _signInButton() {
-    return OutlineButton(
-      splashColor: Colors.grey,
-      onPressed: () async {
-        await signInWithGoogle()
-            .then((FirebaseUser user) => print(user.displayName))
-            .catchError((e) => print(e));
+    return Container(
+      decoration: BoxDecoration(
+        color: white,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              blurRadius: 10,
+              spreadRadius: 2,
+              color: black20,
+              offset: Offset(0.0, 2.0))
+        ],
+        borderRadius: BorderRadius.circular(40),
+      ),
+      child: OutlineButton(
+        splashColor: Colors.grey,
+        onPressed: () async {
+          await signInWithGoogle()
+              .then((FirebaseUser user) => Navigator.pushReplacementNamed(
+                  context, "favoritos",
+                  arguments: user))
+              .catchError((e) => print(e));
 
-        // whenComplete(() {
-        //   Navigator.of(context).push(
-        //     MaterialPageRoute(
-        //       builder: (context) {
-        //         return FavoritosPage();
-        //       },
-        //     ),
-        //   );
-        // });
-      },
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-      highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.grey),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image(
-                image: AssetImage("assets/images/google_logo.png"),
-                height: 35.0),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(
-                'Sign in with Google',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey,
+          // whenComplete(() {
+          //   Navigator.of(context).push(
+          //     MaterialPageRoute(
+          //       builder: (context) {
+          //         return FavoritosPage();
+          //       },
+          //     ),
+          //   );
+          // });
+        },
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+        highlightElevation: 0,
+        borderSide: BorderSide(color: Colors.grey),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image(
+                  image: AssetImage("assets/images/google_logo.png"),
+                  height: 35.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text(
+                  'Sign in with Google',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.grey,
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

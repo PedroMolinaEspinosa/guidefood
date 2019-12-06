@@ -36,13 +36,16 @@ class _SplashPageState extends State<SplashPage> {
               width: size.width * 0.7,
               child: Image.asset("assets/images/bear.gif"),
             ),
-            Text(
-              "Guidefood",
-              style: TextStyle(
-                  decoration: TextDecoration.none,
-                  color: white,
-                  fontSize: size.width * 0.17,
-                  fontFamily: "Golden-Hills"),
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                "Guidefood",
+                style: TextStyle(
+                    decoration: TextDecoration.none,
+                    color: white,
+                    fontSize: size.width * 0.17,
+                    fontFamily: "Golden-Hills"),
+              ),
             ),
           ],
         ),
