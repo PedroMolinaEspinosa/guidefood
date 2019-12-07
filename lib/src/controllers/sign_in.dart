@@ -31,3 +31,7 @@ void signOutGoogle() async {
 
   print("User Sign Out");
 }
+
+// FirebaseAuth getAuth() {
+//   return _auth;
+// }

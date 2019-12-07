@@ -275,7 +275,7 @@ class _DetalleState extends State<DetallePage> {
 
   FutureBuilder<List<Ingrediente>> _getIngredientesCards(
       BuildContext context, Receta receta) {
-    final apiProvider = RecetasProvider();
+    final apiProvider = ApiProvider();
 
     return FutureBuilder(
       future: apiProvider.getIngredientes(),

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:guidefood/src/controllers/sign_in.dart';
 import 'package:guidefood/src/styles/colores.dart';
 import 'package:guidefood/src/styles/estilo.dart';
-import 'package:guidefood/src/vista/pages/favoritos_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -13,6 +12,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    // if (getAuth().currentUser() != null) {
+    //   Navigator.pushReplacementNamed(context, "favoritos");
+    // }
     return Scaffold(
       body: Container(
         child: Center(
@@ -31,8 +33,8 @@ class _LoginPageState extends State<LoginPage> {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              Color(0xFF006AB3),
-              Color(0xFF94CF48),
+              Color(0xFF7C00EA),
+              Color(0xFFEA0027),
             ],
           ),
         ),

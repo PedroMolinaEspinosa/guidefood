@@ -19,7 +19,7 @@ class SelectorPage extends StatefulWidget {
 class _SelectorPageState extends State<SelectorPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  RecetasProvider provider = new RecetasProvider();
+  ApiProvider provider = new ApiProvider();
   List<Ingrediente> listaPasada = new List<Ingrediente>();
 
   @override

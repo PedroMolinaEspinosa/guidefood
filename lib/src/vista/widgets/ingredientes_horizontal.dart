@@ -37,7 +37,7 @@ class IngredientesHorizontal extends StatelessWidget {
                   tag: ingrediente.imagen,
                   child: FadeInImage(
                     image: NetworkImage(ingrediente.imagen),
-                    placeholder: AssetImage('assets/images/no-conection.png'),
+                    placeholder: AssetImage("assets/images/loading-burger.gif"),
                     fit: BoxFit.fill,
                     height: screenSize.height * 0.07,
                   ),

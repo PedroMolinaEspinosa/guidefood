@@ -6,7 +6,7 @@ import 'package:guidefood/src/vista/widgets/drag_box.dart';
 class GridSeleccion extends StatelessWidget {
   final List<Ingrediente> ingredientesPasados;
   GridSeleccion(this.ingredientesPasados);
-  final RecetasProvider provider = new RecetasProvider();
+  final ApiProvider provider = new ApiProvider();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

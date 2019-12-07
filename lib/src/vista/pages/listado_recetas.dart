@@ -15,7 +15,7 @@ class ListadoRecetasPage extends StatelessWidget {
   String imagenError = "assets/images/no-conection.png";
 
   bool datosCargados = false;
-  final apiProvider = new RecetasProvider();
+  final apiProvider = new ApiProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -50,20 +50,25 @@ class ListadoRecetasPage extends StatelessWidget {
                 _scaffoldKey,
               ),
               flexibleSpace: LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                top = constraints.biggest.height;
-                return FlexibleSpaceBar(
-                  titlePadding: EdgeInsets.symmetric(vertical: 0),
-                  title: Container(
-                    color: black,
-                    height: 1,
-                  ),
-                  background: Image.asset(
-                    imagenTopic,
-                    fit: BoxFit.fill,
-                  ),
-                );
-              }),
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  top = constraints.biggest.height;
+                  return FlexibleSpaceBar(
+                    titlePadding: EdgeInsets.symmetric(vertical: 0),
+                    title: Container(
+                      color: black,
+                      height: 1,
+                    ),
+                    background: FadeInImage(
+                      fadeInDuration: Duration(milliseconds: 300),
+                      image: AssetImage(
+                        imagenTopic,
+                      ),
+                      placeholder: AssetImage("assets/images/transparent.png"),
+                      fit: BoxFit.fill,
+                    ),
+                  );
+                },
+              ),
               backgroundColor: marron,
               elevation: 0.0,
               pinned: true,
@@ -85,8 +90,13 @@ class ListadoRecetasPage extends StatelessWidget {
                             child: Container(
                           width: size.width,
                           height: size.height * 0.5,
-                          child: Image.asset(
-                            imagenError,
+                          child: FadeInImage(
+                            fadeInDuration: Duration(milliseconds: 200),
+                            image: AssetImage(
+                              imagenError,
+                            ),
+                            placeholder:
+                                AssetImage("assets/images/transparent.png"),
                             fit: BoxFit.fitWidth,
                           ),
                         ));

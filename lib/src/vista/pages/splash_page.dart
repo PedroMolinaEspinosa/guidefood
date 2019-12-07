@@ -28,23 +28,35 @@ class _SplashPageState extends State<SplashPage> {
     Size size = MediaQuery.of(context).size;
     return Container(
       child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Stack(
           children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(top: size.height * 0.1),
-              width: size.width * 0.7,
-              child: Image.asset("assets/images/bear.gif"),
+            Positioned(
+              top: size.height * 0,
+              bottom: size.height * 0.5,
+              left: size.width * 0.1,
+              right: size.width * 0.08,
+              child: Container(
+                margin: EdgeInsets.only(top: size.height * 0.1),
+                width: size.width * 0.7,
+                child: FadeInImage(
+                  fadeInDuration: Duration(milliseconds: 300),
+                  image: AssetImage("assets/images/bear.gif"),
+                  placeholder: AssetImage("assets/images/transparent.png"),
+                )
+             
+              ),
             ),
-            Container(
-              alignment: Alignment.center,
-              child: Text(
-                "Guidefood",
-                style: TextStyle(
-                    decoration: TextDecoration.none,
-                    color: white,
-                    fontSize: size.width * 0.17,
-                    fontFamily: "Golden-Hills"),
+            Center(
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  "Guidefood",
+                  style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: white,
+                      fontSize: size.width * 0.17,
+                      fontFamily: "Golden-Hills"),
+                ),
               ),
             ),
           ],
