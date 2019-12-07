@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "722826317312",
+    "firebase_url": "https://guidefood-29c08.firebaseio.com",
+    "project_id": "guidefood-29c08",
+    "storage_bucket": "guidefood-29c08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722826317312:android:aeb4a2110529db6bc792e5",
+        "android_client_info": {
+          "package_name": "com.example.guidefood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722826317312-u2q7hd893rfpoqtpove0upink7ppho4j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.guidefood",
+            "certificate_hash": "cd439205aef3460fe409c9525a82706cbdf67a86"
+          }
+        },
+        {
+          "client_id": "722826317312-ckfm2dn6h398dss7a8pq7v0in1iucnc4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.guidefood",
+            "certificate_hash": "74c0526df88978ed21c338abcf95825ab0697302"
+          }
+        },
+        {
+          "client_id": "722826317312-omr4cpqhat852938458a9su9k3htr4is.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.guidefood",
+            "certificate_hash": "fee683f596d62dfdd3de6f7f95c17354354b2d10"
+          }
+        },
+        {
+          "client_id": "722826317312-498hra089l2tqpkqj6r1rjq1d7hkt7rg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2RTkTWpawKo27plYDghAzPYwW4L1jkaY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722826317312-498hra089l2tqpkqj6r1rjq1d7hkt7rg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "722826317312-ndsi13omd580achi8uln51f81t6fblah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.guidefood"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

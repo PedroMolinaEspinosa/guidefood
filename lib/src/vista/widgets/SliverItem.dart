@@ -45,10 +45,7 @@ class SliverItem extends StatelessWidget {
                 ),
                 child: Hero(
                   tag: receta.id,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
+                  child: ClipOval(
                     child: FadeInImage(
                       placeholder: AssetImage("assets/images/loading.gif"),
                       image: NetworkImage(receta.imagen),

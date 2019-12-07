@@ -6,6 +6,7 @@ import 'package:guidefood/src/models/ingredient.dart';
 import 'package:guidefood/src/models/receta.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 import 'package:guidefood/src/vista/widgets/appBar_%20widget.dart';
+import 'package:guidefood/src/vista/widgets/drawer.dart';
 import 'package:guidefood/src/vista/widgets/ingredientes_horizontal.dart';
 
 class DetallePage extends StatefulWidget {
@@ -14,11 +15,15 @@ class DetallePage extends StatefulWidget {
 }
 
 class _DetalleState extends State<DetallePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     final size = getMediaSize(context);
     final Receta receta = ModalRoute.of(context).settings.arguments;
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: DrawerGuideFood(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -127,11 +132,14 @@ class _DetalleState extends State<DetallePage> {
   Widget _nombreReceta(Size size, Receta receta) {
     return Container(
       margin: EdgeInsets.only(top: size.height * 0.01),
-      width: size.width,
+      width: size.width * 0.7,
       child: Center(
         child: Text(
           receta.nombre,
           style: nombreDetalle,
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 2,
         ),
       ),
       height: size.height * 0.09,
@@ -217,9 +225,11 @@ class _DetalleState extends State<DetallePage> {
       ),
       child: Hero(
           tag: receta.id,
-          child: FadeInImage(
-              placeholder: AssetImage("assets/images/loading-burger.gif"),
-              image: _avatar)),
+          child: ClipOval(
+            child: FadeInImage(
+                placeholder: AssetImage("assets/images/loading.gif"),
+                image: _avatar),
+          )),
     );
   }
 
@@ -232,7 +242,9 @@ class _DetalleState extends State<DetallePage> {
       final contenedor = new Container(
         padding: EdgeInsets.all(size.width * 0.03),
         margin: EdgeInsets.only(
-            bottom: 20, right: size.width * 0.02, left: size.width * 0.02),
+            bottom: size.height * 0.02,
+            right: size.width * 0.02,
+            left: size.width * 0.02),
         child: Text(
           receta.descripcion[i],
           style: listaIntruccionesTextStyle,
@@ -259,13 +271,11 @@ class _DetalleState extends State<DetallePage> {
       SizedBox(height: 20),
     );
     return listaIntrucciones;
-    // SizedBox(height: size.height * 0.07),
-    // SizedBox(height: 20),
   }
 
   FutureBuilder<List<Ingrediente>> _getIngredientesCards(
       BuildContext context, Receta receta) {
-    final apiProvider = RecetasProvider();
+    final apiProvider = ApiProvider();
 
     return FutureBuilder(
       future: apiProvider.getIngredientes(),
@@ -346,8 +356,12 @@ class _DetalleState extends State<DetallePage> {
       children: <Widget>[
         ClipPath(
           child: Container(
-            margin: EdgeInsets.only(top: size.height * 0.05),
-            decoration: BoxDecoration(color: primaryColorDark), //modificado
+            //margin: EdgeInsets.only(top: size.height * 0.05),
+            decoration: BoxDecoration(
+                color: primaryColorDark,
+                image: DecorationImage(
+                    image: AssetImage("assets/images/maera.jpg"),
+                    fit: BoxFit.fill)), //modificado
             height: size.height / 4,
             width: size.width,
           ),
@@ -355,7 +369,12 @@ class _DetalleState extends State<DetallePage> {
         ),
         Container(
             height: size.height * 0.1,
-            child: getAppBar(context, primaryColorDark, 17)),
+            child: getAppBar(
+              context,
+              transparente,
+              17,
+              _scaffoldKey,
+            )),
         Container(
           margin: EdgeInsets.only(top: size.height * 0.05),
           child: _buildAvatar(receta, context),

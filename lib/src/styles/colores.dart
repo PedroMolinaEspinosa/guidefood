@@ -10,3 +10,4 @@ LinearGradient gradientNeurok = new LinearGradient(
     end: Alignment.bottomCenter,
     colors: [Color(0xFFF9708CC), Color(0xFF002661)]);
 Color fillerNeurok = Color(0xFF707070);
+Color black20 = Colors.black.withOpacity(0.2);
