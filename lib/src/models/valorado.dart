@@ -18,7 +18,7 @@ class Valorados {
 class Valorado {
   String email;
   int receta;
-  int valoracion;
+  double valoracion;
   String comentario;
   String fecha;
 

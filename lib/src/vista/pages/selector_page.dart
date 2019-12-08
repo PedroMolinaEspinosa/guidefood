@@ -312,7 +312,7 @@ Widget _iconoDificultad(Size size, Receta receta) {
     alignment: Alignment.center,
     child: Icon(
       Icons.lens,
-      color: getIconColorDificultad(receta),
+      color: getIconColorDificultad(receta.dificultad),
       size: size.width * 0.04,
     ),
   );
@@ -321,7 +321,8 @@ Widget _iconoDificultad(Size size, Receta receta) {
 Widget _iconoCalificacion(Size size, Receta receta) {
   return Container(
     child: Container(
-        height: size.width * 0.04, child: getIconCalificacion(receta)),
+        height: size.width * 0.04,
+        child: getIconCalificacion(receta.calificacion)),
   );
 }
 

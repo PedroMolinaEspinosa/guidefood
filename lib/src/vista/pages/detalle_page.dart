@@ -390,7 +390,7 @@ class _DetalleState extends State<DetallePage> {
         children: <Widget>[
           Icon(
             Icons.lens,
-            color: getIconColorDificultad(receta),
+            color: getIconColorDificultad(receta.dificultad),
             size: 28,
           ),
           Container(
@@ -411,7 +411,8 @@ class _DetalleState extends State<DetallePage> {
       padding: EdgeInsets.only(right: size.width * 0.1),
       child: Column(
         children: <Widget>[
-          Container(height: 30, child: getIconCalificacion(receta)),
+          Container(
+              height: 30, child: getIconCalificacion(receta.calificacion)),
           Container(
             padding: EdgeInsets.only(left: 3),
             child: Text(

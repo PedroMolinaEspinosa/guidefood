@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:guidefood/src/models/receta.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 
-Color getIconColorDificultad(Receta receta) {
-  switch (receta.dificultad) {
+Color getIconColorDificultad(String dificultad) {
+  switch (dificultad) {
     case "Baja":
       return primaryColorLight;
       break;
@@ -16,24 +15,24 @@ Color getIconColorDificultad(Receta receta) {
   }
 }
 
-Image getIconCalificacion(Receta receta) {
-  if (receta.calificacion < 2.0)
+Image getIconCalificacion(double calificacion) {
+  if (calificacion < 2.0)
     return Image(
       image: AssetImage("assets/iconos/heart0.png"),
     );
-  if (receta.calificacion >= 2.0 && receta.calificacion < 4.0)
+  if (calificacion >= 2.0 && calificacion < 4.0)
     return Image(
       image: AssetImage("assets/iconos/heart25.png"),
     );
-  if (receta.calificacion >= 4.0 && receta.calificacion < 6.0)
+  if (calificacion >= 4.0 && calificacion < 6.0)
     return Image(
       image: AssetImage("assets/iconos/heart50.png"),
     );
-  if (receta.calificacion >= 6.0 && receta.calificacion < 9.0)
+  if (calificacion >= 6.0 && calificacion < 9.0)
     return Image(
       image: AssetImage("assets/iconos/heart75.png"),
     );
-  if (receta.calificacion >= 9.0)
+  if (calificacion >= 9.0)
     return Image(
       image: AssetImage("assets/iconos/heart100.png"),
     );

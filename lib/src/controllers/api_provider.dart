@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:async';
+import 'package:guidefood/src/models/favorito.dart';
 import 'package:guidefood/src/models/ingredient.dart';
 import 'package:guidefood/src/models/receta.dart';
 import 'package:guidefood/src/models/valorado.dart';
@@ -12,6 +13,7 @@ class ApiProvider {
   String _urlRecetas = 'http://192.168.0.22:3006/recetas';
   String _urlIngredientes = 'http://192.168.0.22:3006/ingredientes';
   String _urlValorados = 'http://192.168.0.22:3006/valorados';
+  String _urlFavoritos = 'http://192.168.0.22:3006/favoritos';
 
   Future<List<Receta>> getRecetas() async {
     var resp;
@@ -75,6 +77,32 @@ class ApiProvider {
 
     Response response =
         await http.post(_urlValorados, headers: headers, body: json);
+    int statusCode = response.statusCode;
+    print(statusCode.toString());
+  }
+
+  Future<List<Favorito>> getFavoritos() async {
+    var resp;
+    try {
+      resp = await http.get(Uri.encodeFull(_urlFavoritos),
+          headers: {"Accept": "application/json"});
+    } catch (e) {
+      print(e);
+      return [];
+    }
+
+    final decodedData = json.decode(resp.body);
+
+    final favoritos = new Favoritos.fromJsonList(decodedData);
+    return favoritos.items;
+  }
+
+  enviarFavorito(Valorado valor) async {
+    Map<String, String> headers = {"Content-type": "application/json"};
+    String json = '{"email": "${valor.email}", "receta": ${valor.receta}}';
+
+    Response response =
+        await http.post(_urlFavoritos, headers: headers, body: json);
     int statusCode = response.statusCode;
     print(statusCode.toString());
   }

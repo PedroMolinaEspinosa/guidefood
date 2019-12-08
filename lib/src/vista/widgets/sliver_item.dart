@@ -95,7 +95,7 @@ class SliverItem extends StatelessWidget {
                   margin: EdgeInsets.only(left: size.width * 0.03),
                   child: Icon(
                     Icons.lens,
-                    color: getIconColorDificultad(receta),
+                    color: getIconColorDificultad(receta.dificultad),
                     size: 15,
                   ),
                 ),
@@ -147,7 +147,7 @@ class SliverItem extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          getIconCalificacion(receta),
+                          getIconCalificacion(receta.calificacion),
                           Container(
                             margin: EdgeInsets.only(left: size.width * 0.02),
                             child: Text(
