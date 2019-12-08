@@ -4,6 +4,7 @@ import 'package:guidefood/src/models/ingredient.dart';
 import 'package:guidefood/src/models/receta.dart';
 import 'package:guidefood/src/models/valorado.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 class ApiProvider {
   bool _cargando = false;
@@ -65,5 +66,16 @@ class ApiProvider {
 
     final valorados = new Valorados.fromJsonList(decodedData);
     return valorados.items;
+  }
+
+  enviarValoracion(Valorado valor) async {
+    Map<String, String> headers = {"Content-type": "application/json"};
+    String json =
+        '{"email": "${valor.email}", "valoracion": ${valor.valoracion}, "receta": ${valor.receta}, "comentario": "${valor.comentario}"}';
+
+    Response response =
+        await http.post(_urlValorados, headers: headers, body: json);
+    int statusCode = response.statusCode;
+    print(statusCode.toString());
   }
 }

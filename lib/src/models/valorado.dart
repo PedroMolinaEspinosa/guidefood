@@ -25,6 +25,7 @@ class Valorado {
   Valorado(
       {@required this.email,
       @required this.receta,
+      @required this.valoracion,
       @required this.comentario,
       this.fecha});
 
