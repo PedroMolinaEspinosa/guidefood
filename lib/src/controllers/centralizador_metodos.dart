@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guidefood/src/styles/estilo.dart';
+import 'package:guidefood/src/styles/colores.dart';
 
 Color getIconColorDificultad(String dificultad) {
   switch (dificultad) {

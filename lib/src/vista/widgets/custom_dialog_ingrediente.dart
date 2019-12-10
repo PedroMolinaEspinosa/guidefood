@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guidefood/src/models/ingredient.dart';
+import 'package:guidefood/src/styles/colores.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 
 class CustomDialogIngrediente extends AlertDialog {
@@ -60,11 +61,13 @@ class CustomDialogIngrediente extends AlertDialog {
           ),
           child: Hero(
             tag: ingrediente.imagen,
-            child: FadeInImage(
-              placeholder: AssetImage("assets/images/loading-burger.gif"),
-              image: NetworkImage(ingrediente.imagen),
-              width: size.width * 0.2,
-              height: size.width * 0.2,
+            child: ClipOval(
+              child: FadeInImage(
+                placeholder: AssetImage("assets/images/loading-burger.gif"),
+                image: NetworkImage(ingrediente.imagen),
+                width: size.width * 0.2,
+                height: size.width * 0.2,
+              ),
             ),
           ),
         ),

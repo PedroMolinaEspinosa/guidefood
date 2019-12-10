@@ -161,6 +161,7 @@ class FavoritosPage extends StatelessWidget {
               width: size.width * 0.17,
               height: size.height * 0.08,
               child: FadeInImage(
+                fadeInDuration: Duration(milliseconds: 300),
                 fit: BoxFit.fill,
                 image: NetworkImage(usuario.imagenUrl),
                 placeholder: AssetImage("assets/images/transparent.png"),
@@ -233,30 +234,19 @@ class FavoritosPage extends StatelessWidget {
           if (snapshot.connectionState != ConnectionState.done ||
               snapshot.hasData == null) {
             childCount = 0;
-            return CustomScrollView(
-              physics: NeverScrollableScrollPhysics(),
-              slivers: <Widget>[
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      return Center(
-                          child: Container(
-                        width: size.width,
-                        child: FadeInImage(
-                          fadeInDuration: Duration(milliseconds: 200),
-                          image: AssetImage(
-                            imagenError,
-                          ),
-                          placeholder:
-                              AssetImage("assets/images/transparent.png"),
-                          fit: BoxFit.fitWidth,
-                        ),
-                      ));
-                    },
-                    childCount: 1,
+            return SliverToBoxAdapter(
+              child: Center(
+                  child: Container(
+                width: size.width,
+                child: FadeInImage(
+                  fadeInDuration: Duration(milliseconds: 200),
+                  image: AssetImage(
+                    imagenError,
                   ),
+                  placeholder: AssetImage("assets/images/transparent.png"),
+                  fit: BoxFit.fitWidth,
                 ),
-              ],
+              )),
             );
           } else {
             valoradas = snapshot.data;

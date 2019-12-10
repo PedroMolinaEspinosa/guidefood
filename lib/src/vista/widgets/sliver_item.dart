@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guidefood/src/controllers/centralizador_metodos.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/models/receta.dart';
+import 'package:guidefood/src/styles/colores.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 import 'package:guidefood/src/vista/widgets/clippers/ClipperRecetas.dart';
 import 'package:guidefood/src/vista/widgets/clippers/CustomClipperShadowWidget.dart';
@@ -77,7 +78,7 @@ class SliverItem extends StatelessWidget {
     return ClipShadowPath(
       shadow: Shadow(
           color: Colors.black26, blurRadius: 5, offset: Offset(0.0, 5.0)),
-      clipper: CustomClipperComment(),
+      clipper: CustomClipperSliverItem(),
       child: Container(
         height: size.height * 0.14,
         decoration: BoxDecoration(
@@ -116,7 +117,6 @@ class SliverItem extends StatelessWidget {
                 margin: EdgeInsets.only(left: size.width * 0.03),
                 child: Text(
                   receta.nombre,
-                  //"brilli brilli brilli brilli brilli brilli brilli brilli brilli brilli brilli brilli brilli brilli brilli brilli",
                   style: titleTile,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,

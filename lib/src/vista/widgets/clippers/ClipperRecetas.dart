@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomClipperComment extends CustomClipper<Path> {
+class CustomClipperSliverItem extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
