@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guidefood/src/controllers/centralizador_metodos.dart';
 import 'package:guidefood/src/models/valorado.dart';
 import 'package:guidefood/src/styles/colores.dart';
 import 'package:guidefood/src/styles/estilo.dart';
@@ -49,13 +50,19 @@ class ComentarioItem extends StatelessWidget {
                     valorado.comentario,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 8,
+                    textAlign: TextAlign.justify,
                     style: TextStyle(
                         color: black,
                         fontFamily: MontserratFontFamily.medium,
                         fontSize: size.width * 0.04,
                         decoration: TextDecoration.none),
                   ),
-                )
+                ),
+                Container(
+                    width: size.width * 0.1,
+                    height: size.width * 0.1,
+                    margin: EdgeInsets.only(right: 20),
+                    child: getIconCalificacion(valorado.valoracion))
               ],
             ),
           ),

@@ -251,38 +251,41 @@ class _DetalleState extends State<DetallePage> {
       SizedBox(height: size.height * 0.07),
     );
     for (var i = 0; i < receta.descripcion.length; i++) {
-      final contenedor = new Container(
-        padding: EdgeInsets.all(size.width * 0.03),
-        margin: EdgeInsets.only(
-            bottom: size.height * 0.02,
-            right: size.width * 0.02,
-            left: size.width * 0.02),
-        child: Text(
-          receta.descripcion[i],
-          style: listaIntruccionesTextStyle,
-          textAlign: TextAlign.justify,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(
-              image: AssetImage("assets/images/background_instrucciones.jpg"),
-              fit: BoxFit.fill),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 10,
-              spreadRadius: 0.5,
-              offset: Offset(0.0, 2.0),
-            ),
-          ],
-        ),
-      );
-      listaIntrucciones.add(contenedor);
+      listaIntrucciones.add(_pasoPreparacion(size, i));
     }
     listaIntrucciones.add(
       SizedBox(height: 20),
     );
     return listaIntrucciones;
+  }
+
+  Widget _pasoPreparacion(Size size, int i) {
+    return Container(
+      padding: EdgeInsets.all(size.width * 0.03),
+      margin: EdgeInsets.only(
+          bottom: size.height * 0.02,
+          right: size.width * 0.02,
+          left: size.width * 0.02),
+      child: Text(
+        receta.descripcion[i],
+        style: listaIntruccionesTextStyle,
+        textAlign: TextAlign.justify,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        image: DecorationImage(
+            image: AssetImage("assets/images/background_instrucciones.jpg"),
+            fit: BoxFit.fill),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10,
+            spreadRadius: 0.5,
+            offset: Offset(0.0, 2.0),
+          ),
+        ],
+      ),
+    );
   }
 
   FutureBuilder<List<Ingrediente>> _getIngredientesCards(
