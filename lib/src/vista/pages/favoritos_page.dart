@@ -234,8 +234,7 @@ class FavoritosPage extends StatelessWidget {
           if (snapshot.connectionState != ConnectionState.done ||
               snapshot.hasData == null) {
             childCount = 0;
-            return SliverToBoxAdapter(
-              child: Center(
+            return Center(
                   child: Container(
                 width: size.width,
                 child: FadeInImage(
@@ -246,7 +245,7 @@ class FavoritosPage extends StatelessWidget {
                   placeholder: AssetImage("assets/images/transparent.png"),
                   fit: BoxFit.fitWidth,
                 ),
-              )),
+              ),
             );
           } else {
             valoradas = snapshot.data;
