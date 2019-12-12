@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>722826317312-ndsi13omd580achi8uln51f81t6fblah.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.722826317312-ndsi13omd580achi8uln51f81t6fblah</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>722826317312-omr4cpqhat852938458a9su9k3htr4is.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAnkGIIWLe0Up-xyuRgs4AgXilrOtFzHu4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>722826317312</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.guidefood</string>
+	<key>PROJECT_ID</key>
+	<string>guidefood-29c08</string>
+	<key>STORAGE_BUCKET</key>
+	<string>guidefood-29c08.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:722826317312:ios:3b15bfd6b1f492a7c792e5</string>
+	<key>DATABASE_URL</key>
+	<string>https://guidefood-29c08.firebaseio.com</string>
+</dict>
+</plist>
