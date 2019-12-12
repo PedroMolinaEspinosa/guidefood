@@ -4,6 +4,7 @@ import 'package:guidefood/src/controllers/centralizador_metodos.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/models/ingredient.dart';
 import 'package:guidefood/src/models/receta.dart';
+import 'package:guidefood/src/styles/colores.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 import 'package:guidefood/src/vista/widgets/appBar_%20widget.dart';
 import 'package:guidefood/src/vista/widgets/contenedor_ingrediente_widget.dart';
@@ -312,7 +313,7 @@ Widget _iconoDificultad(Size size, Receta receta) {
     alignment: Alignment.center,
     child: Icon(
       Icons.lens,
-      color: getIconColorDificultad(receta),
+      color: getIconColorDificultad(receta.dificultad),
       size: size.width * 0.04,
     ),
   );
@@ -321,7 +322,8 @@ Widget _iconoDificultad(Size size, Receta receta) {
 Widget _iconoCalificacion(Size size, Receta receta) {
   return Container(
     child: Container(
-        height: size.width * 0.04, child: getIconCalificacion(receta)),
+        height: size.width * 0.04,
+        child: getIconCalificacion(receta.calificacion)),
   );
 }
 

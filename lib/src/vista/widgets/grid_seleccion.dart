@@ -6,6 +6,8 @@ import 'package:guidefood/src/vista/widgets/drag_box.dart';
 class GridSeleccion extends StatelessWidget {
   final List<Ingrediente> ingredientesPasados;
   GridSeleccion(this.ingredientesPasados);
+  String imagenError = "assets/images/no-conection.png";
+
   final ApiProvider provider = new ApiProvider();
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,14 @@ class GridSeleccion extends StatelessWidget {
                 alignment: Alignment.center,
                 width: size.width,
                 height: size.height * 0.5,
-                child: Text("Error de conexion"),
+                child: FadeInImage(
+                  fadeInDuration: Duration(milliseconds: 200),
+                  image: AssetImage(
+                    imagenError,
+                  ),
+                  placeholder: AssetImage("assets/images/transparent.png"),
+                  fit: BoxFit.fitWidth,
+                ),
               ));
             } else
               childCount = snapshot.data.length;

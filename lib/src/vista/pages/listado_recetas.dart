@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:guidefood/src/controllers/api_provider.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/models/receta.dart';
+import 'package:guidefood/src/styles/colores.dart';
 import 'package:guidefood/src/styles/estilo.dart';
-import 'package:guidefood/src/vista/widgets/SliverItem.dart';
 import 'package:guidefood/src/vista/widgets/appBar_%20widget.dart';
 import 'package:guidefood/src/vista/widgets/drawer.dart';
+import 'package:guidefood/src/vista/widgets/sliver_item.dart';
 
 class ListadoRecetasPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -83,25 +84,21 @@ class ListadoRecetasPage extends StatelessWidget {
                     projectSnap.hasData == null) {
                   childCount = 0;
 
-                  return SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        return Center(
-                            child: Container(
-                          width: size.width,
-                          height: size.height * 0.5,
-                          child: FadeInImage(
-                            fadeInDuration: Duration(milliseconds: 200),
-                            image: AssetImage(
-                              imagenError,
-                            ),
-                            placeholder:
-                                AssetImage("assets/images/transparent.png"),
-                            fit: BoxFit.fitWidth,
+                  return SliverToBoxAdapter(
+                    child: Center(
+                      child: Container(
+                        width: size.width,
+                        height: size.height * 0.5,
+                        child: FadeInImage(
+                          fadeInDuration: Duration(milliseconds: 200),
+                          image: AssetImage(
+                            imagenError,
                           ),
-                        ));
-                      },
-                      childCount: 1,
+                          placeholder:
+                              AssetImage("assets/images/transparent.png"),
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
                     ),
                   );
                 } else

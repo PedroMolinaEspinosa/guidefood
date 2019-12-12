@@ -4,8 +4,12 @@ import 'package:guidefood/src/controllers/centralizador_metodos.dart';
 import 'package:guidefood/src/controllers/controlador_pantalla..dart';
 import 'package:guidefood/src/models/ingredient.dart';
 import 'package:guidefood/src/models/receta.dart';
+import 'package:guidefood/src/models/valorado.dart';
+import 'package:guidefood/src/styles/colores.dart';
 import 'package:guidefood/src/styles/estilo.dart';
+import 'package:guidefood/src/vista/widgets/Comentario_item.dart';
 import 'package:guidefood/src/vista/widgets/appBar_%20widget.dart';
+import 'package:guidefood/src/vista/widgets/custom_dialog_calificaci%C3%B3n.dart';
 import 'package:guidefood/src/vista/widgets/drawer.dart';
 import 'package:guidefood/src/vista/widgets/ingredientes_horizontal.dart';
 
@@ -16,52 +20,60 @@ class DetallePage extends StatefulWidget {
 
 class _DetalleState extends State<DetallePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
+  String imagenError = "assets/images/no-conection.png";
+  Receta receta;
+  ApiProvider api = new ApiProvider();
+  List<Valorado> valoradas = new List<Valorado>();
   @override
   Widget build(BuildContext context) {
     final size = getMediaSize(context);
-    final Receta receta = ModalRoute.of(context).settings.arguments;
+    receta = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       key: _scaffoldKey,
       endDrawer: DrawerGuideFood(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            _parteSuperiorDesign(size, receta),
-            Column(
-              children: <Widget>[
-                Container(
-                  child: Row(
+      body: CustomScrollView(slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            children: <Widget>[
+              _parteSuperiorDesign(size, receta),
+              Column(
+                children: <Widget>[
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        _iconoDificultad(size, receta),
+                        _iconoCalificacion(size, receta),
+                      ],
+                    ),
+                    width: size.width,
+                    height: size.height * 0.07,
+                  ),
+                  _nombreReceta(size, receta),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      _iconoDificultad(size, receta),
-                      _iconoCalificacion(size, receta),
+                      _apartadoCategoria(size, receta),
+                      _iconoDuracion(size, receta),
                     ],
                   ),
-                  width: size.width,
-                  height: size.height * 0.07,
-                ),
-                _nombreReceta(size, receta),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    _apartadoCategoria(size, receta),
-                    _iconoDuracion(size, receta),
-                  ],
-                ),
-                _filaDeIngredientes(size, receta),
-                _realizacion(size, receta),
-                SizedBox(height: 30),
-                Container(
-                  margin: EdgeInsets.only(
-                      left: size.width * 0.3, right: size.width * 0.3),
-                ),
-                SizedBox(height: 10)
-              ],
-            ),
-          ],
+                  _filaDeIngredientes(size, receta),
+                  _realizacion(size, receta),
+                  SizedBox(height: 10),
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: size.width * 0.3, right: size.width * 0.3),
+                    height: 2,
+                    color: black20,
+                  ),
+                  SizedBox(height: 10),
+                ],
+              ),
+            ],
+          ),
         ),
-      ),
+        _valoraciones(size),
+      ]),
     );
   }
 
@@ -239,38 +251,41 @@ class _DetalleState extends State<DetallePage> {
       SizedBox(height: size.height * 0.07),
     );
     for (var i = 0; i < receta.descripcion.length; i++) {
-      final contenedor = new Container(
-        padding: EdgeInsets.all(size.width * 0.03),
-        margin: EdgeInsets.only(
-            bottom: size.height * 0.02,
-            right: size.width * 0.02,
-            left: size.width * 0.02),
-        child: Text(
-          receta.descripcion[i],
-          style: listaIntruccionesTextStyle,
-          textAlign: TextAlign.justify,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(
-              image: AssetImage("assets/images/background_instrucciones.jpg"),
-              fit: BoxFit.fill),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 10,
-              spreadRadius: 0.5,
-              offset: Offset(0.0, 2.0),
-            ),
-          ],
-        ),
-      );
-      listaIntrucciones.add(contenedor);
+      listaIntrucciones.add(_pasoPreparacion(size, i));
     }
     listaIntrucciones.add(
       SizedBox(height: 20),
     );
     return listaIntrucciones;
+  }
+
+  Widget _pasoPreparacion(Size size, int i) {
+    return Container(
+      padding: EdgeInsets.all(size.width * 0.03),
+      margin: EdgeInsets.only(
+          bottom: size.height * 0.02,
+          right: size.width * 0.02,
+          left: size.width * 0.02),
+      child: Text(
+        receta.descripcion[i],
+        style: listaIntruccionesTextStyle,
+        textAlign: TextAlign.justify,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        image: DecorationImage(
+            image: AssetImage("assets/images/background_instrucciones.jpg"),
+            fit: BoxFit.fill),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10,
+            spreadRadius: 0.5,
+            offset: Offset(0.0, 2.0),
+          ),
+        ],
+      ),
+    );
   }
 
   FutureBuilder<List<Ingrediente>> _getIngredientesCards(
@@ -390,7 +405,7 @@ class _DetalleState extends State<DetallePage> {
         children: <Widget>[
           Icon(
             Icons.lens,
-            color: getIconColorDificultad(receta),
+            color: getIconColorDificultad(receta.dificultad),
             size: 28,
           ),
           Container(
@@ -407,22 +422,110 @@ class _DetalleState extends State<DetallePage> {
   }
 
   Widget _iconoCalificacion(Size size, Receta receta) {
-    return Container(
-      padding: EdgeInsets.only(right: size.width * 0.1),
-      child: Column(
-        children: <Widget>[
-          Container(height: 30, child: getIconCalificacion(receta)),
-          Container(
-            padding: EdgeInsets.only(left: 3),
-            child: Text(
-              receta.calificacion.toString(),
-              style: calificationTile,
-              textAlign: TextAlign.center,
-            ),
-          )
-        ],
+    return GestureDetector(
+      onTap: () {
+        CustomDialogCalificacion(context, receta, size).build(context);
+      },
+      child: Container(
+        padding: EdgeInsets.only(right: size.width * 0.1),
+        child: Column(
+          children: <Widget>[
+            Container(
+                height: 30, child: getIconCalificacion(receta.calificacion)),
+            Container(
+              padding: EdgeInsets.only(left: 3),
+              child: Text(
+                receta.calificacion.toString(),
+                style: calificationTile,
+                textAlign: TextAlign.center,
+              ),
+            )
+          ],
+        ),
       ),
     );
+  }
+
+  Widget _valoraciones(
+    Size size,
+  ) {
+    return FutureBuilder(
+      future: api.getValorados(),
+      builder: (context, snapshot) {
+        var childCount = 0;
+
+        if (snapshot.connectionState != ConnectionState.done ||
+            snapshot.hasData == null) {
+          childCount = 0;
+          return SliverToBoxAdapter(
+            child: Center(
+              child: Container(
+                width: size.width,
+                child: FadeInImage(
+                  fadeInDuration: Duration(milliseconds: 200),
+                  image: AssetImage(
+                    imagenError,
+                  ),
+                  placeholder: AssetImage("assets/images/transparent.png"),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+            ),
+          );
+        } else {
+          valoradas = snapshot.data;
+          List<Valorado> listaValoracionesReceta =
+              valoracionesReceta(valoradas, receta);
+          return SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return ComentarioItem(
+                  valorado: listaValoracionesReceta[index],
+                );
+              },
+              childCount: listaValoracionesReceta.length,
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  List<Valorado> valoracionesReceta(List<Valorado> valoradas, Receta receta) {
+    List<Valorado> recetasValoradas = new List<Valorado>();
+    for (var i = 0; i < valoradas.length; i++) {
+      if (valoradas[i].receta == receta.id) {
+        recetasValoradas.add(valoradas[i]);
+      }
+    }
+    recetasValoradas.add(
+      Valorado(
+        comentario:
+            "Es que me parece increíble que pongan los animales así vivos y luego la receta, osea, esto va en contra de los derechos de los animales, voy a denunciaros por opresores.",
+        email: "pedromolesp@gmail.com",
+        receta: 9,
+        valoracion: 1,
+      ),
+    );
+    recetasValoradas.add(
+      Valorado(
+        comentario: "Menuda receta, me encanta, es genial",
+        email: "pedromolesp@gmail.com",
+        receta: 0,
+        valoracion: 2,
+      ),
+    );
+
+    recetasValoradas.add(
+      Valorado(
+        comentario: "Esto no es comestible, llevo un mes en urgencias",
+        email: "pedromolesp@gmail.com",
+        receta: 3,
+        valoracion: 9,
+      ),
+    );
+
+    return recetasValoradas;
   }
 }
 

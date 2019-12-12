@@ -18,13 +18,14 @@ class Valorados {
 class Valorado {
   String email;
   int receta;
-  int valoracion;
+  double valoracion;
   String comentario;
   String fecha;
 
   Valorado(
       {@required this.email,
       @required this.receta,
+      @required this.valoracion,
       @required this.comentario,
       this.fecha});
 

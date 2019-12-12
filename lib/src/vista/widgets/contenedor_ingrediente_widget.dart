@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guidefood/src/models/ingredient.dart';
+import 'package:guidefood/src/styles/colores.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 
 class ContenedorIngredienteWidget extends StatelessWidget {

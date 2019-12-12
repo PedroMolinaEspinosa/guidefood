@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:guidefood/src/styles/colores.dart';
 import 'package:guidefood/src/styles/estilo.dart';
 
 class SplashPage extends StatefulWidget {
@@ -36,15 +37,13 @@ class _SplashPageState extends State<SplashPage> {
               left: size.width * 0.1,
               right: size.width * 0.08,
               child: Container(
-                margin: EdgeInsets.only(top: size.height * 0.1),
-                width: size.width * 0.7,
-                child: FadeInImage(
-                  fadeInDuration: Duration(milliseconds: 300),
-                  image: AssetImage("assets/images/bear.gif"),
-                  placeholder: AssetImage("assets/images/transparent.png"),
-                )
-             
-              ),
+                  margin: EdgeInsets.only(top: size.height * 0.1),
+                  width: size.width * 0.7,
+                  child: FadeInImage(
+                    fadeInDuration: Duration(milliseconds: 300),
+                    image: AssetImage("assets/images/bear.gif"),
+                    placeholder: AssetImage("assets/images/transparent.png"),
+                  )),
             ),
             Center(
               child: Container(
