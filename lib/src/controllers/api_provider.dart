@@ -29,7 +29,6 @@ class ApiProvider {
       print(e);
       return [];
     }
-
     final decodedData = json.decode(resp.body);
 
     final recetas = new Recetas.fromJsonList(decodedData);
