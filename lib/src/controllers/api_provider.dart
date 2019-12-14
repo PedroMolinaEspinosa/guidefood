@@ -10,10 +10,10 @@ import 'package:http/http.dart';
 class ApiProvider {
   bool _cargando = false;
   //String _apiKey = 'fbe9ea629dc8abd2036403c3d5a1e0c2';
-  String _urlRecetas = 'http://192.168.0.28:3006/recetas';
-  String _urlIngredientes = 'http://192.168.0.28:3006/ingredientes';
-  String _urlValorados = 'http://192.168.0.28:3006/valorados';
-  String _urlFavoritos = 'http://192.168.0.28:3006/favoritos';
+  String _urlRecetas = 'http://192.168.0.22:3006/recetas';
+  String _urlIngredientes = 'http://192.168.0.22:3006/ingredientes';
+  String _urlValorados = 'http://192.168.0.22:3006/valorados';
+  String _urlFavoritos = 'http://192.168.0.22:3006/favoritos';
 
   Future<List<Receta>> getRecetas() async {
     var resp;
