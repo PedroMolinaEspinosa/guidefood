@@ -26,7 +26,7 @@ class _SliverItemState extends State<SliverItem>
   void initState() {
     super.initState();
     controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 700));
     animation = Tween(begin: 0.0, end: 1.0).animate(controller);
 
     controller.forward();

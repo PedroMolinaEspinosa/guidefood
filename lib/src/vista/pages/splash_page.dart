@@ -1,8 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:guidefood/src/styles/colores.dart';
-import 'package:guidefood/src/styles/estilo.dart';
 
 class SplashPage extends StatefulWidget {
   @override

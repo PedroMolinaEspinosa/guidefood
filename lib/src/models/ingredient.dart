@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 class Ingredientes {
@@ -15,7 +16,7 @@ class Ingredientes {
   }
 }
 
-class Ingrediente {
+class Ingrediente extends Equatable {
   int id;
   String nombre;
   String tipo;
@@ -29,7 +30,8 @@ class Ingrediente {
       @required this.tipo,
       @required this.imagen,
       @required this.medida,
-      this.cantidad});
+      this.cantidad})
+      : super();
 
   Ingrediente.fromJsonMap(Map<String, dynamic> json) {
     id = json['id'];
