@@ -54,7 +54,11 @@ class CustomDialogCalificacion extends AlertDialog {
               Container(
                 height: size.height * 0.1,
                 width: size.width * 0.9,
+                padding: EdgeInsets.symmetric(
+                    horizontal: size.width * 0.03,
+                    vertical: size.height * 0.02),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Flexible(
